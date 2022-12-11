@@ -18,7 +18,7 @@ spiller = { #lager en liten ordbok for informasjon om spilleren, ettersom det ku
 #bruker en placeholder fremfor å legge den inn senere kun fordi det ser bedre ut. Jeg vet at det kommer til å legges til autmoatisk i linjen som tar inn input, dette er kun for estetisk skyld
     "HP": 20 #lagrer HP-en til spilleren, som kun skal endres basert på events senere i spillet
 }
-spiller["Navn"] = input("Hva heter du?: ") #lar spilleren velge sitt eget navn, som kommer til å ha en effekt på intro-en ol.
+spiller["Navn"] = input("Hva heter du?: ") #lar spilleren velge sitt eget navn, som kommer til å ha en effekt på introen ol.
 
 def endreHP(val:int): #en funksjon som tar inn en verdi og endrer HP-en til spilleren med den verdien
     """
@@ -76,7 +76,7 @@ class singleEvents:
         """
         print(self.beskrivelse) #printer først ut beskrivelsen for å sette ~stemmningen~
         print(self.hvaSkjer) #printer ut hva som skjer og hva spilleren har muligheten til å gjøre
-        resultat = int(input("    >"))-1 #henter inn hvilken index resultatet skal komme fra og treker fra 1 pga måten python sorterer indexer på
+        resultat = int(input("    >"))-1 #henter inn hvilken index resultatet skal komme fra og trekker fra 1 pga måten python bruker indekser på
         if type(self.resultat[resultat]) == tuple: #sjekker om resultatet vi har fått er lagret i en tuple, ettersom dette betyr at noe skal endres
 #grunnen til at vi skal bruke tupler på den måten vi gjør det på er fordi hvis funksjonen som skal endre på HP/en tilstand bare deklareres inni en tuple med resultatet, vil variabelen endres uansett om det er det valget spilleren tar.
 #å sette enkle str eller int verdier som siste variabel i en tuple gjør det lettere å bare sjekke om resultatet først er en tuple, og så sjekke hva slags verdi som ligger sist i tuplen og endre det som skal endres
@@ -217,6 +217,7 @@ hoyreEvents = [
     ),
 ]
 hvaHarSkjeddEvents = []
+
 def velgerEvent(liste:list): #en felles funksjon for å velge inn ulike events
     """
     En funksjon som velger et tilfeldig event fra en liste
@@ -237,6 +238,7 @@ while (len(hoyreEvents)!= 0 and len(venstreEvents) !=0 and spiller["HP"] >= 0 an
     else: #hvis man går rett fram på stien
         velgerEvent(mainPathEvents)
 
+#sjekker de ulike tilstandene spilleren muligens har endret på i løpet av spillet, og ser hvilken ending spilleren da får
 if spiller["HP"]<=0:
     print(">GAME OVER \n>TRY AGAIN?")
 elif tilstander["ekkorn"]==True:
