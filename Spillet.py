@@ -210,6 +210,7 @@ hoyreEvents = [
             ],
             [
                 (">Du klatrer så høyt du klarer, men bjørnen følger like etter! \n>Heldigvis har bjørnen spist seg feit på laks fra en lokal elv, så den kommer seg ikke langt opp i treet, og gir seg etter en liten stund \n>Uheldigvis klarer den å komme seg høyt nok opp til å klore deg på beinet. Du mister 8HP", -8),
+                ">Du vet ikke hvordan, men du klarer å løpe fra bjørnen! \n>Den feite bjørnen slutter å jage deg etterhvert, og når du er helt sikker på at den ikke følger etter deg, fortsetter du å gå nedover stien",
                 (">Hverken du selv eller Gud vet hvorfor du slår til bjørnen, men du løper bort til den og slår den på snuten så hardt du kan \n>Den blir selvfølgelig sur, og biter deg så hardt den kan \n>Du faller ned, og lurer på hvor i livet det gikk så galt at du endte opp med å bli spist levende av en bjørn. \n>Etter den har fått med seg store deler av magen og armene dine, fortsetter bjørnen fornøyd videre i stien. \n>Du mister 19HP", -19)
             ]
         ]
