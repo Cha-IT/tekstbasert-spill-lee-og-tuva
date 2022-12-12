@@ -1,7 +1,3 @@
-#Lee og Tuvas superkule IT-prosjekt
-#hvem gjør hva:
-#Lee: lager multi-events(X), organiserer og rydder opp i kode
-#Tuva: lager ulike events og resultater, introparagraf til spiller
 import random as rd
 
 tilstander = { #en ordbok med tilstander som kan endres til "True" basert på hva spilleren gjør
@@ -117,6 +113,7 @@ class multiEvents(singleEvents):
         self.hvaSkjerTo = hvaSkjerTo #lager en egen variabel vi kun trenger for denne
     
     def spillEvent(self):
+
         """
         En funksjon som iverksetter eventet som skal kjøres
         Tar automatisk inn variabelen "self", ettersom funksjonen er spesifikk for en klasse
@@ -182,6 +179,10 @@ venstreEvents = [
             (">Du spiser soppen. \n >Det var helt vanlig sopp, men den smakte litt muggen... \n>Du blir kvalm :(", "kvalm"),
             "Du valgte å ikke spise soppen. Det var kanskje lurt, den luktet veldig vondt.... \n>Du fortsetter nedover den fine stien"
         ]
+    ),
+    multiEvents(
+        ">Fuglene kvitrer rundt deg imens du fortsetter ned stien. \n>Solen glimter gjennom trærne og du føler deg varm på innsiden",
+        ">Trærne fletter seg tettere sammen, og før du vet ordet av det, ser du en liten bjørn. Hva vil du gjøre? \n>1: Gå rundt babybjørnen og håpe at moren ikke ser deg \n>2:"
     )
 ]
 
