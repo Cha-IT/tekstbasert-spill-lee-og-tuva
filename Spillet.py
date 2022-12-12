@@ -79,20 +79,25 @@ class singleEvents:
         """
         print(self.beskrivelse) #printer først ut beskrivelsen for å sette ~stemmningen~
         print(self.hvaSkjer) #printer ut hva som skjer og hva spilleren har muligheten til å gjøre
-        resultat = int(input("    >"))-1 #henter inn hvilken index resultatet skal komme fra og trekker fra 1 pga måten python bruker indekser på
-        if type(self.resultat[resultat]) == tuple: #sjekker om resultatet vi har fått er lagret i en tuple, ettersom dette betyr at noe skal endres
+        resultat = input("    >") #henter inn hvilken index resultatet skal komme fra og trekker fra 1 pga måten python bruker indekser på
+        if resultat == "Rick Astley":
+            print("Rick Astley hører ditt skrik om hjelp, og kommer for å redde deg")
+            endreTilstand("rickern")
+        else:
+            resultat = int(resultat)-1
+            if type(self.resultat[resultat]) == tuple: #sjekker om resultatet vi har fått er lagret i en tuple, ettersom dette betyr at noe skal endres
 #grunnen til at vi skal bruke tupler på den måten vi gjør det på er fordi hvis funksjonen som skal endre på HP/en tilstand bare deklareres inni en tuple med resultatet, vil variabelen endres uansett om det er det valget spilleren tar.
 #å sette enkle str eller int verdier som siste variabel i en tuple gjør det lettere å bare sjekke om resultatet først er en tuple, og så sjekke hva slags verdi som ligger sist i tuplen og endre det som skal endres
 #ikke spør meg (Lee) hva som skjer hvis et event krever at både en tilstand og HP skal endres. men siden ingen events SKAL ha det (jeg ser på deg, Tuva), trenger jeg(Lee) ikke å bekymre meg om det
 #men hvis det nå skulle skje, kan man vel bruke en tuple inni en tuple (en "tuptuplele", hvis du vil)
-            if type(self.resultat[resultat][1]) == int: #sjekker om den siste verdien i tuplen er et tall, ettersom dette betyr at HP-en til spilleren skal endres
-                endreHP(self.resultat[resultat][1]) #endrer HP-en til spilleren med verdien som ligger sist i tuplen med en funksjon som ligger lengre oppe i koden
-            elif type(self.resultat[resultat][1]) == str: #sjekker om den siste verdien er en str, ettersom dette betyr at en tilstand på endres
-                endreTilstand(self.resultat[resultat][1])#endrer tilstanden som står bakerst i tuplen slik at den for den boolske verdien True
-            print(self.resultat[resultat][0])#printer ut teksten som står først i tuplen, som er det skriftlige resultatet spilleren skal få
-        else: #hvis resultatet ikke er en tuple, printer vi bare ut resultatet
-            print(self.resultat[resultat])
-        print()
+                if type(self.resultat[resultat][1]) == int: #sjekker om den siste verdien i tuplen er et tall, ettersom dette betyr at HP-en til spilleren skal endres
+                    endreHP(self.resultat[resultat][1]) #endrer HP-en til spilleren med verdien som ligger sist i tuplen med en funksjon som ligger lengre oppe i koden
+                elif type(self.resultat[resultat][1]) == str: #sjekker om den siste verdien er en str, ettersom dette betyr at en tilstand på endres
+                    endreTilstand(self.resultat[resultat][1])#endrer tilstanden som står bakerst i tuplen slik at den for den boolske verdien True
+                print(self.resultat[resultat][0])#printer ut teksten som står først i tuplen, som er det skriftlige resultatet spilleren skal få
+            else: #hvis resultatet ikke er en tuple, printer vi bare ut resultatet
+                print(self.resultat[resultat])
+            print()
 
 
 
@@ -242,7 +247,7 @@ def velgerEvent(liste:list): #en felles funksjon for å velge inn ulike events
     hvaHarSkjeddEvents.append(liste[valg])
     liste.pop(valg)
 
-while (len(hoyreEvents)!= 0 and len(venstreEvents) !=0 and spiller["HP"] >= 0 and tilstander["snudd"] == False):
+while (len(hoyreEvents)!= 0 and len(venstreEvents) !=0 and spiller["HP"] >= 0 and tilstander["snudd"] == False and tilstander["rickern"] == False):
     if tilstander["høyre"] == True:
         velgerEvent(hoyreEvents)
     elif tilstander["venstre"] == True:
@@ -278,6 +283,7 @@ elif tilstander["snudd"] == True:
     print("Kjør 'Bestemor dør av abstinenser' ending")
 elif tilstander["kvalm"]==True:
     print("kjør spy-ending :)")
-
+elif tilstander["rickern"] == True:
+    print("Kjør rick astley-ending")
 else:
     print("vanlig ending")
