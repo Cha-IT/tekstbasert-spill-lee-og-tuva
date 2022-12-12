@@ -49,10 +49,11 @@ print(f""">Hei, {spiller['Navn']}!
         >Det tror jeg du får til... 
         >Lykke til!
         
-        >Du og din bestemor har planlagt en harrytur i lang tid å.
+        >Du og din bestemor har planlagt en harrytur i lang tid og.
         >Hun er desverre for gammel til å kjøre selv, men du har ikke en egen bil.
         >Du skal gjennom skogen for å komme til bestemoren din og kjøre hennes volvo 240 til Storlien
-        >Desverre bor du på den andre siden av en skummel skog :( """)
+        >Desverre bor du på den andre siden av en skummel skog :( \n
+         """)
 
 class singleEvents:
     """
@@ -196,12 +197,20 @@ hoyreEvents = [
         (">Du ignorerer gramfonen. \n>Å nei! Hva skjer? \n>Gramofonen ble for overopphetet og ekslpoderte! Du mister 5HP!", -5)
         ]
     ),
+    singleEvents(
+        ">Du går nedover stien. Du begynner å se deg litt rundt og merker noen litt merkelige sopper."
+        ">Du kjenner du er litt sulten, kanskje de ikke er farlige? \n Vil du spise soppen? \n >1: Ja \n>2: Nei",
+        [
+            
+        ]   
+
+    ),
     multiEvents(
         ">Imens du går gjennom skogen, begynner du å føle deg sulten. \n>Selv om du vet at det er god mat i Sverige, trenger du noe nå \n>Du fortsetter på stien, men holder et åpent øye for noe spiselig...", 
         ">Men hva er dette?\n>Litt borte fra stien ser du litt sopp. \n>Du mener å huske at du har sett noe lignende i en bok bestemoren din har om spiselig sopp. \n>Hva gjør du? \n>1: Går bort og spiser soppen \n>2: Fortsetter videre på stien", 
         [
             ">Etter du har spist soppen, innser du at synet ditt begynner å gå litt bananas. \n>Du har nettopp spist fleinsopp! Hva skal du gjøre? \n>1: Svelge soppen og bare la alt dette skje \n>2: Få deg selv til å kaste opp soppen", 
-            ">Du fortsetter videre på stien... \n>Plutseig, ser du en stor, brun bjørn på stien foran deg! Hva skal du gjøre nå? \n>1:Klarte opp i det nærmeste treet og håpe at bjørnen ikke klatrer etter deg. \n>2: LØP! \n>3: Vel, du har alltid hatt lyst til å ha en slåsskamp med en bjørn..."
+            ">Du fortsetter videre på stien... \n>Plutselig, ser du en stor, brun bjørn på stien deg! Hva skal du gjøre nå? \n>1:Klarte opp i det nærmeste treet og håpe at bjørnen ikke klatrer etter deg. \n>2: LØP! \n>3: Vel, du har alltid hatt lyst til å ha en slosskamp med en bjørn..."
         ],
         [
             [
