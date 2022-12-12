@@ -16,9 +16,8 @@ spiller = { #lager en liten ordbok for informasjon om spilleren, ettersom det ku
 #bruker en placeholder fremfor å legge den inn senere kun fordi det ser bedre ut. Jeg vet at det kommer til å legges til autmoatisk i linjen som tar inn input, dette er kun for estetisk skyld
     "HP": 20 #lagrer HP-en til spilleren, som kun skal endres basert på events senere i spillet
 }
-spiller["Navn"] = input("Hva heter du?: ") #lar spilleren velge sitt eget navn, som kommer til å ha en effekt på introen ol.
 
-def endreHP(val:int): #en funksjon som tar inn en verdi og endrer HP-en til spilleren med den verdien
+def endreHP(val:int): #en funksjon som tar inn en verdi og endrer HP-en til spilleren med den verdien, slik at vi kan lage standard-metoder for alle eventene og fortsatt endre på spillerens HP
     """
     En funksjon som tar inn en verdi og endrer spillerens HP med den verdien
 
@@ -28,7 +27,7 @@ def endreHP(val:int): #en funksjon som tar inn en verdi og endrer HP-en til spil
     newHP = spiller["HP"] + val
     spiller["HP"] = newHP
 
-def endreTilstand(type:str): #en funksjon som tar inn en type tilstand som skal endres og endrer den til True
+def endreTilstand(type:str): #en funksjon som tar inn en type tilstand som skal endres og endrer den til True, slik at vi kan lage standard-metoder for alle eventene og fortsatt endre på tilstander
     """
     En funksjon som tar inn typen tilstand som skal endres og endrer den tilstanden slik at den er True
 
@@ -38,7 +37,8 @@ def endreTilstand(type:str): #en funksjon som tar inn en type tilstand som skal 
     tilstander[type] = True
 
 
-#intro
+spiller["Navn"] = input("Hva heter du?: ") #lar spilleren velge sitt eget navn, som kommer til å ha en effekt på introen ol.
+
 print(f""">Hei, {spiller['Navn']}!
 
     >Velkommen til spillet vårt! 
@@ -57,12 +57,15 @@ print(f""">Hei, {spiller['Navn']}!
     >La oss begynne...
 
         
-    >KALIBRERER...
+    >INITIALISERER...
     >HENTER INN EVENTS...
     >GIR LAKS TIL BJØRNENE...
     >FINNER FLEINSOPP...
+    >SPILLER AV GODE, GAMLE PLATER...
+    >GIR EIKENØTTER TIL DYRELIVET...
+    >MØTER GAMLE KJENNINGER PÅ STIEN
 
-    >KALIBRERING FULLFØRT
+    >INITIALISERING FULLFØRT
 
 
 
@@ -75,10 +78,12 @@ print(f""">Hei, {spiller['Navn']}!
 """)
 
 class singleEvents:
+
     """
     Klasse som lager interaksjoner der man får kun ett prompt
     """
     def __init__(self, beskrivelse:str, hvaSkjer:str, resultat:list) -> None:
+
         """
         Konstruktører:
         beskrivelse (str) = en beskrivelse av scenen
@@ -90,6 +95,7 @@ class singleEvents:
         self.resultat = resultat
     
     def spillEvent(self):
+
         """
         En funksjon som iverksetter eventet som skal kjøres
         Tar automatisk inn variabelen "self", ettersom funksjonen er spesifikk for en klasse
@@ -122,6 +128,7 @@ class multiEvents(singleEvents):
     Klasse som lager interaksjoner der man får flere prompts
     """
     def __init__(self, beskrivelse: str, hvaSkjer: str, hvaSkjerTo: list, resultat: list) -> None:
+
         """
         Konstruktører:
         beskrivelse (str) = en beskrivelse av scenen
@@ -130,7 +137,7 @@ class multiEvents(singleEvents):
         resultat (list) = En dobbel liste som gir et resultat basert på hva spilleren velger å gjøre i de to ulike valgmulighetene
         """
         super().__init__(beskrivelse, hvaSkjer, resultat) #henter disse inn fra super-klassen
-        self.hvaSkjerTo = hvaSkjerTo #lager en egen variabel vi kun trenger for denne
+        self.hvaSkjerTo = hvaSkjerTo #deklarerer et atributt vi kun trenger for denne sub-klassen
     
     def spillEvent(self):
 
@@ -138,6 +145,7 @@ class multiEvents(singleEvents):
         En funksjon som iverksetter eventet som skal kjøres
         Tar automatisk inn variabelen "self", ettersom funksjonen er spesifikk for en klasse
         """
+        #denne metoden gjør egentlig mye av de samme som metoden i superklassen, men den har bare noen par ekstra ledd
         print(self.beskrivelse)
         print(self.hvaSkjer)
         forsteResultat = int(input("    >"))-1
@@ -155,7 +163,7 @@ class multiEvents(singleEvents):
         print()
  
 
-
+#vil anbefale å ha Wordwrap innstallert for dette med mindre du har lyst til å scrolle veldig langt bort for å lese all teksten
 mainPathEvents = [
     singleEvents(
         ">Når du går videre inn i skogen, ser du at stien deler seg i to...", 
@@ -186,7 +194,7 @@ venstreEvents = [
     ), 
     singleEvents(
         ">Du går gjennom skogen. Du hører små fotskritt i treet nært deg", 
-        ">Det er et ekorn! Hva vil du gjøre?: \n>1: gi ekkornet en eikenøtt \n>2: ignorer", 
+        ">Det er et ekorn! Hva vil du gjøre?: \n>1: gi ekornet en eikenøtt \n>2: ignorer", 
         [
             (">Gratulerer! Du har fått en ny venn!", "ekkorn"), 
             ">Du ignorerte ekkornet. Du føler at det ikke var det lureste valget"
@@ -278,17 +286,18 @@ def velgerEvent(liste:list): #en felles funksjon for å velge inn ulike events
     Parameter:
     liste (list) = listen som et event skal hentes ut fra
     """
-    valg = rd.randint(0, len(liste))-1
+    valg = rd.randint(0, len(liste))-1 #velger eventet tilfeldig fordi det ville vært kjedelig hvis det alltid hadde kommet i en bestemt rekkefølge
     liste[valg].spillEvent()
     hvaHarSkjeddEvents.append(liste[valg])
     liste.pop(valg)
 
 while (len(hoyreEvents)!= 0 and len(venstreEvents) !=0 and spiller["HP"] > 0 and tilstander["snudd"] == False and tilstander["rickern"] == False):
+    #sjekker hvilken retning spilleren går i og gir et event fra den tilhørende listen
     if tilstander["høyre"] == True:
         velgerEvent(hoyreEvents)
     elif tilstander["venstre"] == True:
         velgerEvent(venstreEvents)
-    else: #hvis man går rett fram på stien
+    else:
         velgerEvent(mainPathEvents)
 
 #sjekker de ulike tilstandene spilleren muligens har endret på i løpet av spillet, og ser hvilken ending spilleren da får
