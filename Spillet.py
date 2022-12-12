@@ -11,7 +11,8 @@ tilstander = { #en ordbok med tilstander som kan endres til "True" basert på hv
     "høyre":False, #denne variabelen og den under sjekker hvilken retning spilleren går i
     "venstre":False,
     "snudd": False,
-    "kvalm": False
+    "kvalm": False,
+    "rickern": False
 }
 
 spiller = { #lager en liten ordbok for informasjon om spilleren, ettersom det kun er to viktige ting man trenger å lagre om spilleren: navn og HP
@@ -253,7 +254,9 @@ while (len(hoyreEvents)!= 0 and len(venstreEvents) !=0 and spiller["HP"] >= 0 an
 if spiller["HP"]<=0:
     print(">GAME OVER \n>TRY AGAIN?")
 elif tilstander["ekkorn"]==True:
-    print("Kjør ekkorn-ending")    
+    print("""
+    >du har 
+    """)    
 elif tilstander["høy"]==True:
     print("Kjør rehab ending")
 elif tilstander["snudd"] == True:
