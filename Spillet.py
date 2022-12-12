@@ -150,7 +150,7 @@ mainPathEvents = [
         ">Det virker som noe stress å komme seg rundt alt dette. \n>Hva vil du gjøre?: \n>1: Gå rundt \n>2: Snu", 
         [
             ">Du gikk rundt hindringene. Du må være veldig glad i tobakk eller hva?", 
-            (">Du snudde. Bestemora di er veldig skuffet over at dere ikke fikk dratt på harrytur til Sverige", "Snudd")
+            (">Du snudde. Bestemora di er veldig skuffet over at dere ikke fikk dratt på harrytur til Sverige", "snudd")
         ]
     )
 ]
@@ -182,7 +182,22 @@ venstreEvents = [
     ),
     multiEvents(
         ">Fuglene kvitrer rundt deg imens du fortsetter ned stien. \n>Solen glimter gjennom trærne og du føler deg varm på innsiden",
-        ">Trærne fletter seg tettere sammen, og før du vet ordet av det, ser du en liten bjørn. Hva vil du gjøre? \n>1: Gå rundt babybjørnen og håpe at moren ikke ser deg \n>2:"
+        ">Trærne fletter seg tettere sammen, og før du vet ordet av det, ser du en liten bjørn. Hva vil du gjøre? \n>1: Gå rundt babybjørnen og håpe at moren ikke ser deg \n>2: Se rundt deg og gå bort til bjørnen hvis moren ikke er her",
+        [
+            ">Du går forbi babybjørnen i en stor bue, slik at du ikke terger moren hvis den er i nærheten... \n>Det ser ut til å fungere! Babybjørnen ser rart på deg, men ingen moderbjørn kommer for å angripe. \n>Men å nei! Du gikk for langt ut fra stien og datt ned i en grop! \n>Hva vil du gjøre? \n>1: Prøve å klatre ut av den gjørmete gropen \n>2: Akseptere din skjebne og bare bli liggende", 
+            ">Du ser deg godt om og klarer ikke å se mammabjørnen. \n>Sakte men sikkert går du opp til den og strekker ut hånden din... \n>BRØL! \n>Du så deg ikke godt nok for! Mammabjørnen kommer løpende mot deg! \n>Hva gjør du nå? \n>1: Legge deg ned i fosterstilling og begynn å sug på tomellen \n>2:Begynn å be \n>3: LØP!"
+        ],
+        [
+            [
+                ">Med gjørme under fingerneglene, klorer du deg opp fra hullet. \n>Så snart du er ute av hullet, tar du deg en liten pust i bakken, før du fortsetter videre på stien",
+                (">Du legger deg ned i gjørma og godtar din skjebne... \n>Det begynner å regne... \n>Gjørma begynner å utvide seg, men du flytter deg ikke \n>Den er nesten høy nok til å dekke hele ansiktet ditt nå... \n>Nesen og munnen din er helt dekket av gjørme. Du klarer ikke å puste \n>Du kveles... sakte men sikkert... \n>Du mister 20HP", -20)
+            ],
+            [
+                (">Du legger deg ned i fosterstilling og begynner å sutte på tommelen sin \n>Mammabjørnen stopper opp, hun synes at du ligner på ungen sin! \n>Hun gir deg noen blåbær hun egentlig hadde spart opp til å gå i davle til vinteren. \n>Du spiser blåbærene, de smaker fantastisk! \n>Du får 2HP!", 2),
+                (">Du legger deg ned på stien og begynner å be til hva enn du tror er der oppe \n>Mammabjørnen kommer rasende mot deg, dritsur fordi du våget å gå bort til ungen hennes. \n>Du klores opp, lem fra lem. \n>Men det ser ut til at det å be før du døde var en god idé! Du havner i himmelen! \n>I himmelen møter du bestemora di. Hun sier at du tok for lang tid til å kommer deg til huset hennes og at hun døde av abstinenser",-20),
+                ">Kanskje det er adrenalinet, kanskje mammabjørnen har spist for mye i forbredelse til dvalen, men du klarer å løpe unna \n>Du slutter ikke å løpe før du er helt sikker på at mammabjørnen har sluttet å jage deg \n>Du fortsetter nedover stien, anpusten"
+            ]
+        ]
     )
 ]
 
@@ -248,7 +263,7 @@ def velgerEvent(liste:list): #en felles funksjon for å velge inn ulike events
     hvaHarSkjeddEvents.append(liste[valg])
     liste.pop(valg)
 
-while (len(hoyreEvents)!= 0 and len(venstreEvents) !=0 and spiller["HP"] >= 0 and tilstander["snudd"] == False and tilstander["rickern"] == False):
+while (len(hoyreEvents)!= 0 and len(venstreEvents) !=0 and spiller["HP"] > 0 and tilstander["snudd"] == False and tilstander["rickern"] == False):
     if tilstander["høyre"] == True:
         velgerEvent(hoyreEvents)
     elif tilstander["venstre"] == True:
@@ -259,7 +274,7 @@ while (len(hoyreEvents)!= 0 and len(venstreEvents) !=0 and spiller["HP"] >= 0 an
 #sjekker de ulike tilstandene spilleren muligens har endret på i løpet av spillet, og ser hvilken ending spilleren da får
 if spiller["HP"]<=0:
     print(">GAME OVER \n>TRY AGAIN?")
-elif tilstander["ekorn"]==True and tilstander["kvalm"]==True:
+elif tilstander["ekkorn"]==True and tilstander["kvalm"]==True:
     print("kjør kavlm ekorn ending :)")
 elif tilstander["ekkorn"]==True:
     print(f"""
