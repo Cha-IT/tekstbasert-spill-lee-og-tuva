@@ -41,17 +41,38 @@ def endreTilstand(type:str): #en funksjon som tar inn en type tilstand som skal 
 #intro
 print(f""">Hei, {spiller['Navn']}!
 
-        >Velkommen til spillet vårt! 
-        >Dette er et tekstbasert spill der du får to valg. 
-        >Enten velger du 1 eller 2 
-        >Det tror jeg du får til... 
-        >Lykke til!
+    >Velkommen til spillet vårt! 
+    >Dette er et tekstbasert spill der du får noen valg. 
+    >Du skriver inn tallet som passer til valget du vil ta
+    >Det tror jeg du får til... 
+    >Lykke til!
         
-        >Du og din bestemor har planlagt en harrytur i lang tid og.
-        >Hun er desverre for gammel til å kjøre selv, men du har ikke en egen bil.
-        >Du skal gjennom skogen for å komme til bestemoren din og kjøre hennes volvo 240 til Storlien
-        >Desverre bor du på den andre siden av en skummel skog :( \n
-         """)
+    >Du og din bestemor har planlagt en harrytur i lang tid og.
+    >Hun er desverre for gammel til å kjøre selv, men du har ikke en egen bil.
+    >Du skal gjennom skogen for å komme til bestemoren din og kjøre hennes volvo 240 til Storlien
+    >Desverre bor du på den andre siden av en skummel skog :(
+    >Du må komme deg gjennom skogen og til bestemors hus
+    >Du vil vel ikke gå glipp av en harrytur til Sverige, vil du det?
+
+    >La oss begynne...
+
+        
+    >KALIBRERER...
+    >HENTER INN EVENTS...
+    >GIR LAKS TIL BJØRNENE...
+    >FINNER FLEINSOPP...
+
+    >KALIBRERING FULLFØRT
+
+
+
+>Du står på kanten av en stor, mørk skog
+>Trærne virker høyere enn de vanligvis gjør
+>Du vet at på andre siden av skogen venter det en artig tur og mye tobakk
+>Selv om skoge virker større og mørkere nå enn den har gjort før, begynner du å gå inn
+>Du har jo tross alt gått gjennom den tusen ganger før. Hvorfor skal denne gangen skille seg ut?
+>Så snart du setter foten din på stien, vet du at det ikke er noen veg tilbake nå
+""")
 
 class singleEvents:
     """
@@ -76,7 +97,7 @@ class singleEvents:
         print(self.beskrivelse) #printer først ut beskrivelsen for å sette ~stemmningen~
         print(self.hvaSkjer) #printer ut hva som skjer og hva spilleren har muligheten til å gjøre
         resultat = input("    >") #henter inn hvilken index resultatet skal komme fra og trekker fra 1 pga måten python bruker indekser på
-        if resultat == "Rick Astley":
+        if resultat == "Rick Astley": #lite Easter Egg for alle singleEvents ;)
             print("Rick Astley hører ditt skrik om hjelp, og kommer for å redde deg")
             endreTilstand("rickern")
         else:
@@ -84,8 +105,7 @@ class singleEvents:
             if type(self.resultat[resultat]) == tuple: #sjekker om resultatet vi har fått er lagret i en tuple, ettersom dette betyr at noe skal endres
 #grunnen til at vi skal bruke tupler på den måten vi gjør det på er fordi hvis funksjonen som skal endre på HP/en tilstand bare deklareres inni en tuple med resultatet, vil variabelen endres uansett om det er det valget spilleren tar.
 #å sette enkle str eller int verdier som siste variabel i en tuple gjør det lettere å bare sjekke om resultatet først er en tuple, og så sjekke hva slags verdi som ligger sist i tuplen og endre det som skal endres
-#ikke spør meg (Lee) hva som skjer hvis et event krever at både en tilstand og HP skal endres. men siden ingen events SKAL ha det (jeg ser på deg, Tuva), trenger jeg(Lee) ikke å bekymre meg om det
-#men hvis det nå skulle skje, kan man vel bruke en tuple inni en tuple (en "tuptuplele", hvis du vil)
+#hvis vi hadde trengt et event der både HP og en tilstand skal endres, kunne man løst dette ved å ha det siste elementet i tuplen være en tuple, og gjort det som en standard at tilstand ligger først og HP ligger sist (dette er også kjent som en "tutupplele")
                 if type(self.resultat[resultat][1]) == int: #sjekker om den siste verdien i tuplen er et tall, ettersom dette betyr at HP-en til spilleren skal endres
                     endreHP(self.resultat[resultat][1]) #endrer HP-en til spilleren med verdien som ligger sist i tuplen med en funksjon som ligger lengre oppe i koden
                 elif type(self.resultat[resultat][1]) == str: #sjekker om den siste verdien er en str, ettersom dette betyr at en tilstand på endres
@@ -174,10 +194,10 @@ venstreEvents = [
     ),
     singleEvents(
         ">Du går nedover stien. Du begynner å se deg litt rundt og merker noen litt merkelige sopper.",
-        ">Du kjenner du er litt sulten, kanskje de ikke er farlige? \n Vil du spise soppen? \n >1: Ja \n>2: Nei",
+        ">Du kjenner du er litt sulten, kanskje de ikke er farlige? \n>Vil du spise soppen? \n>1: Ja \n>2: Nei",
         [
-            (">Du spiser soppen. \n >Det var helt vanlig sopp, men den smakte litt muggen... \n>Du blir kvalm :(", "kvalm"),
-            "Du valgte å ikke spise soppen. Det var kanskje lurt, den luktet veldig vondt.... \n>Du fortsetter nedover den fine stien"
+            (">Du spiser soppen. \n>Det var helt vanlig sopp, men den smakte litt muggen... \n>Du blir kvalm :(", "kvalm"),
+            ">Du valgte å ikke spise soppen. Det var kanskje lurt, den luktet veldig vondt.... \n>Du fortsetter nedover den fine stien"
         ]
     ),
     multiEvents(
@@ -185,15 +205,15 @@ venstreEvents = [
         ">Trærne fletter seg tettere sammen, og før du vet ordet av det, ser du en liten bjørn. Hva vil du gjøre? \n>1: Gå rundt babybjørnen og håpe at moren ikke ser deg \n>2: Se rundt deg og gå bort til bjørnen hvis moren ikke er her",
         [
             ">Du går forbi babybjørnen i en stor bue, slik at du ikke terger moren hvis den er i nærheten... \n>Det ser ut til å fungere! Babybjørnen ser rart på deg, men ingen moderbjørn kommer for å angripe. \n>Men å nei! Du gikk for langt ut fra stien og datt ned i en grop! \n>Hva vil du gjøre? \n>1: Prøve å klatre ut av den gjørmete gropen \n>2: Akseptere din skjebne og bare bli liggende", 
-            ">Du ser deg godt om og klarer ikke å se mammabjørnen. \n>Sakte men sikkert går du opp til den og strekker ut hånden din... \n>BRØL! \n>Du så deg ikke godt nok for! Mammabjørnen kommer løpende mot deg! \n>Hva gjør du nå? \n>1: Legge deg ned i fosterstilling og begynn å sug på tomellen \n>2:Begynn å be \n>3: LØP!"
+            ">Du ser deg godt om og klarer ikke å se mammabjørnen. \n>Sakte men sikkert går du opp til den og strekker ut hånden din... \n>BRØL! \n>Du så deg ikke godt nok for! Mammabjørnen kommer løpende mot deg! \n>Hva gjør du nå? \n>1: Legge deg ned i fosterstilling og begynn å sug på tomellen \n>2: Begynn å be \n>3: LØP!"
         ],
         [
             [
                 ">Med gjørme under fingerneglene, klorer du deg opp fra hullet. \n>Så snart du er ute av hullet, tar du deg en liten pust i bakken, før du fortsetter videre på stien",
-                (">Du legger deg ned i gjørma og godtar din skjebne... \n>Det begynner å regne... \n>Gjørma begynner å utvide seg, men du flytter deg ikke \n>Den er nesten høy nok til å dekke hele ansiktet ditt nå... \n>Nesen og munnen din er helt dekket av gjørme. Du klarer ikke å puste \n>Du kveles... sakte men sikkert... \n>Du mister 20HP", -20)
+                (">Du legger deg ned i gjørma og godtar din skjebne... \n>Det begynner å regne... \n>Gjørma begynner å utvide seg, men du flytter deg ikke \n>Den er nesten høy nok til å dekke hele ansiktet ditt nå... \n>Nesen og munnen din er helt dekket av gjørme. Du klarer ikke å puste \n>Du kveles... sakte men sikkert... \n>Du slutter å puste", -20)
             ],
             [
-                (">Du legger deg ned i fosterstilling og begynner å sutte på tommelen sin \n>Mammabjørnen stopper opp, hun synes at du ligner på ungen sin! \n>Hun gir deg noen blåbær hun egentlig hadde spart opp til å gå i davle til vinteren. \n>Du spiser blåbærene, de smaker fantastisk! \n>Du får 2HP!", 2),
+                (">Du legger deg ned i fosterstilling og begynner å sutte på tommelen sin \n>Mammabjørnen stopper opp, hun synes at du ligner på ungen sin! \n>Hun gir deg noen blåbær hun egentlig hadde spart opp til å gå i dvale til vinteren. \n>Du spiser blåbærene, de smaker fantastisk! \n>Du får 2HP!", 2),
                 (">Du legger deg ned på stien og begynner å be til hva enn du tror er der oppe \n>Mammabjørnen kommer rasende mot deg, dritsur fordi du våget å gå bort til ungen hennes. \n>Du klores opp, lem fra lem. \n>Men det ser ut til at det å be før du døde var en god idé! Du havner i himmelen! \n>I himmelen møter du bestemora di. Hun sier at du tok for lang tid til å kommer deg til huset hennes og at hun døde av abstinenser",-20),
                 ">Kanskje det er adrenalinet, kanskje mammabjørnen har spist for mye i forbredelse til dvalen, men du klarer å løpe unna \n>Du slutter ikke å løpe før du er helt sikker på at mammabjørnen har sluttet å jage deg \n>Du fortsetter nedover stien, anpusten"
             ]
@@ -203,8 +223,8 @@ venstreEvents = [
 
 hoyreEvents = [
     singleEvents(
-        ">Du fortsetter gjennom skogen. Mellom trærne kan du se noe metall som glimter.", 
-        ">Det er en gramofon! Det er en plate i den allerede.... \n>Spill av? \n>1: Ja \n>2: Nei", 
+        ">Du går nedover stien. \n>Trærne pakker seg tettere og tettere sammen, og du begynner å føle at noe er Galt. \n>Du kunne trengt litt glede akkurat nå...", 
+        ">Mellom trærne kan du se noe metall som glimter. \n>Det er en gramofon! Det er en plate i den allerede.... \n>Spill av? \n>1: Ja \n>2: Nei", 
         [
             ("""
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣶⣿⣿⣿⣿⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -234,7 +254,7 @@ hoyreEvents = [
         ">Men hva er dette?\n>Litt borte fra stien ser du litt sopp. \n>Du mener å huske at du har sett noe lignende i en bok bestemoren din har om spiselig sopp. \n>Hva gjør du? \n>1: Går bort og spiser soppen \n>2: Fortsetter videre på stien", 
         [
             ">Etter du har spist soppen, innser du at synet ditt begynner å gå litt bananas. \n>Du har nettopp spist fleinsopp! Hva skal du gjøre? \n>1: Svelge soppen og bare la alt dette skje \n>2: Få deg selv til å kaste opp soppen", 
-            ">Du fortsetter videre på stien... \n>Plutselig, ser du en stor, brun bjørn på stien deg! Hva skal du gjøre nå? \n>1:Klarte opp i det nærmeste treet og håpe at bjørnen ikke klatrer etter deg. \n>2: LØP! \n>3: Vel, du har alltid hatt lyst til å ha en slosskamp med en bjørn..."
+            ">Du fortsetter videre på stien... \n>Plutselig, ser du en stor, brun bjørn på stien deg! Hva skal du gjøre nå? \n>1:Klatre opp i det nærmeste treet og håpe at bjørnen ikke klatrer etter deg. \n>2: LØP! \n>3: Vel, du har alltid hatt lyst til å ha en slåsskamp med en bjørn..."
         ],
         [
             [
@@ -289,7 +309,7 @@ elif tilstander["ekkorn"]==True:
         >Du klarer ikke se på. Du snur deg. 
         >Det blir stille igjen... 
         >Du snur deg tilbake, men du ser ikke bestemoren din lengre? Det er blod overalt og alt du ser....
-        >er ekornet som står på den blodige strikket-gesneren til din avdøde bestemor...\n
+        >er ekornet som står på den blodige strikket-genseren til din avdøde bestemor...\n
         >GAME OVER
         >TRY AGAIN?"
         """)    
