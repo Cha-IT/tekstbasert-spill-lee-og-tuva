@@ -304,7 +304,20 @@ while (len(hoyreEvents)!= 0 and len(venstreEvents) !=0 and spiller["HP"] > 0 and
 if spiller["HP"]<=0:
     print(">GAME OVER \n>TRY AGAIN?")
 elif tilstander["ekkorn"]==True and tilstander["kvalm"]==True:
-    print("kjør kavlm ekorn ending :)")
+    print(f"""
+        >Etter en lang, og slitsom, tur er du endelig kommet gjennom skogen!
+        >Du ser at rett ned stien sitter bestemoren din i hagen sin i en god gammal gyngestol
+        >"Du e så treig {spiller['Navn']}
+        >Plutselig kjenner du at det surrer i magen
+        >Det er den rare ekle soppen du spiste!
+        >Du kjenner at det kommer opp å whooooosshshhssh
+        >Du spyr en stråle mot bakken
+        >Så ute av ingenting hopper ekorn kameraten din av skulderen å begynner å spise oppkastet ditt?
+        >Du og bestemor synes dette er veldig ekkelt. Dere prøver å skynde dere inn i bilen
+        \n
+        >GOOD ENDING
+        >TRY AGAIN? 
+        """)
 elif tilstander["ekkorn"]==True:
     print(f"""
         >Etter en lang lang tur gjennom den skumle skogen, har du endelig kommet gjennom!
