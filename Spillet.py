@@ -259,10 +259,25 @@ while (len(hoyreEvents)!= 0 and len(venstreEvents) !=0 and spiller["HP"] >= 0 an
 #sjekker de ulike tilstandene spilleren muligens har endret på i løpet av spillet, og ser hvilken ending spilleren da får
 if spiller["HP"]<=0:
     print(">GAME OVER \n>TRY AGAIN?")
+elif tilstander["ekorn"]==True and tilstander["kvalm"]==True:
+    print("kjør kavlm ekorn ending :)")
 elif tilstander["ekkorn"]==True:
-    print("""
-    >du har 
-    """)    
+    print(f"""
+        >Etter en lang lang tur gjennom den skumle skogen, har du endelig kommet gjennom!
+        >Du ser at lengre ned stien ut av skogen, sitter bestemoren din i en gammel gyngestol i hagen hennes.
+        >"Du brukt jævli lang tid {spiller['Navn']}..."
+        >Bestemoren din ser på skulderen din.
+        >"E d ei rotte? Ta åsså sætt fra dæ den så fær vi"
+        >Du merker at ditt ekorn-venn ikke var veldig glad i den kommentaren...
+        >Plutselig! 
+        >Ekornet angriper bestemoren din! Det er så blodig! 
+        >Du klarer ikke se på. Du snur deg. 
+        >Det blir stille igjen... 
+        >Du snur deg tilbake, men du ser ikke bestemoren din lengre? Det er blod overalt og alt du ser....
+        >er ekornet som står på den blodige strikket-gesneren til din avdøde bestemor...\n
+        >GAME OVER
+        >TRY AGAIN?"
+        """)    
 elif tilstander["høy"]==True:
     print("Kjør rehab ending")
 elif tilstander["snudd"] == True:
