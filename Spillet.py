@@ -138,8 +138,8 @@ mainPathEvents = [
         ">Når du går videre inn i skogen, ser du at stien deler seg i to...", 
         ">Hva vil du gjøre? \n>1: Gå til venstre \n>2: Gå til høyre", 
         [
-            (">Du fortsetter å gå inn i skogen, denne gangen til venstre...", "Venstre"), 
-            (">Du fortsetter inn i skogen, denne gangen til høyre...", "Høyre")
+            (">Du fortsetter å gå inn i skogen, denne gangen til venstre...", "venstre"), 
+            (">Du fortsetter inn i skogen, denne gangen til høyre...", "høyre")
         ]
     ),
     singleEvents(
