@@ -40,48 +40,6 @@ def endreTilstand(type:str): #en funksjon som tar inn en type tilstand som skal 
 
 spiller["Navn"] = input("Hva heter du?: ") #lar spilleren velge sitt eget navn, som kommer til å ha en effekt på introen ol.
 
-print(f""">Hei, {spiller['Navn']}!
-
-    >Velkommen til spillet vårt! 
-    >Dette er et tekstbasert spill der du får noen valg. 
-    >Du skriver inn tallet som passer til valget du vil ta
-    >Det tror jeg du får til... 
-    >Lykke til!
-        
-    >Du og din bestemor har planlagt en harrytur i lang tid.
-    >Hun er desverre for gammel til å kjøre selv, men du har ikke en egen bil.
-    >Du skal gjennom skogen for å komme til bestemoren din og kjøre hennes volvo 240 til Storlien
-    >Desverre bor du på den andre siden av en skummel skog :(
-    >Du må komme deg gjennom skogen og til bestemors hus
-    >Du vil vel ikke gå glipp av en harrytur til Sverige, vil du det?
-
-    >La oss begynne...
-
-        
-    >INITIALISERER...
-""")
-time.sleep(12)#legger inn pauser i printingen slik at det blir mer brukervennlig og lettere å lese
-print("""
-    >HENTER INN EVENTS...
-    >GIR LAKS TIL BJØRNENE...
-    >FINNER FLEINSOPP...
-    >SPILLER AV GODE, GAMLE PLATER...
-    >GIR EIKENØTTER TIL DYRELIVET...
-    >MØTER GAMLE KJENNINGER PÅ STIEN""")
-time.sleep(2)
-print("""
-    >INITIALISERING FULLFØRT""")
-time.sleep(2)
-
-print("""
->Du står på kanten av en stor, mørk skog
->Trærne virker høyere enn de vanligvis gjør
->Du vet at på andre siden av skogen venter det en artig tur og mye tobakk
->Selv om skoge virker større og mørkere nå enn den har gjort før, begynner du å gå inn
->Du har jo tross alt gått gjennom den tusen ganger før. Hvorfor skal denne gangen skille seg ut?
->Så snart du setter foten din på stien, vet du at det ikke er noen veg tilbake nå
-""")
-time.sleep(10)
 
 class singleEvents:
 
@@ -308,6 +266,50 @@ def velgerEvent(liste:list): #en felles funksjon for å velge inn ulike events
     liste[valg].spillEvent()
     hvaHarSkjeddEvents.append(liste[valg])
     liste.pop(valg)
+
+#printer ut introduksjonen til spilleren
+print(f""">Hei, {spiller['Navn']}!
+
+    >Velkommen til spillet vårt! 
+    >Dette er et tekstbasert spill der du får noen valg. 
+    >Du skriver inn tallet som passer til valget du vil ta
+    >Det tror jeg du får til... 
+    >Lykke til!
+        
+    >Du og din bestemor har planlagt en harrytur i lang tid.
+    >Hun er desverre for gammel til å kjøre selv, men du har ikke en egen bil.
+    >Du skal gjennom skogen for å komme til bestemoren din og kjøre hennes volvo 240 til Storlien
+    >Desverre bor du på den andre siden av en skummel skog :(
+    >Du må komme deg gjennom skogen og til bestemors hus
+    >Du vil vel ikke gå glipp av en harrytur til Sverige, vil du det?
+
+    >La oss begynne...
+
+""")
+time.sleep(10)#legger inn pauser i printingen slik at det blir mer brukervennlig og lettere å lese
+print("""
+    >INITIALISERER...
+    
+    >HENTER INN EVENTS...
+    >GIR LAKS TIL BJØRNENE...
+    >FINNER FLEINSOPP...
+    >SPILLER AV GODE, GAMLE PLATER...
+    >GIR EIKENØTTER TIL DYRELIVET...
+    >MØTER GAMLE KJENNINGER PÅ STIEN""")
+time.sleep(2)
+print("""
+    >INITIALISERING FULLFØRT""")
+time.sleep(2)
+
+print("""
+>Du står på kanten av en stor, mørk skog
+>Trærne virker høyere enn de vanligvis gjør
+>Du vet at på andre siden av skogen venter det en artig tur og mye tobakk
+>Selv om skoge virker større og mørkere nå enn den har gjort før, begynner du å gå inn
+>Du har jo tross alt gått gjennom den tusen ganger før. Hvorfor skal denne gangen skille seg ut?
+>Så snart du setter foten din på stien, vet du at det ikke er noen veg tilbake nå
+""")
+time.sleep(10)
 
 while (len(hoyreEvents)!= 0 and len(venstreEvents) !=0 and spiller["HP"] > 0 and tilstander["snudd"] == False and tilstander["rickern"] == False):
     #sjekker hvilken retning spilleren går i og gir et event fra den tilhørende listen
