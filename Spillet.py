@@ -1,4 +1,5 @@
 import random as rd
+import time
 
 tilstander = { #en ordbok med tilstander som kan endres til "True" basert på hva spilleren gjør
 #bruker en ordbok for disse tilstandene fordi det gjør det lettere å endre de nødvendige variablene på en generell måte i med klassene
@@ -58,17 +59,21 @@ print(f""">Hei, {spiller['Navn']}!
 
         
     >INITIALISERER...
+""")
+time.sleep(12)#legger inn pauser i printingen slik at det blir mer brukervennlig og lettere å lese
+print("""
     >HENTER INN EVENTS...
     >GIR LAKS TIL BJØRNENE...
     >FINNER FLEINSOPP...
     >SPILLER AV GODE, GAMLE PLATER...
     >GIR EIKENØTTER TIL DYRELIVET...
-    >MØTER GAMLE KJENNINGER PÅ STIEN
+    >MØTER GAMLE KJENNINGER PÅ STIEN""")
+time.sleep(2)
+print("""
+    >INITIALISERING FULLFØRT""")
+time.sleep(2)
 
-    >INITIALISERING FULLFØRT
-
-
-
+print("""
 >Du står på kanten av en stor, mørk skog
 >Trærne virker høyere enn de vanligvis gjør
 >Du vet at på andre siden av skogen venter det en artig tur og mye tobakk
@@ -76,6 +81,7 @@ print(f""">Hei, {spiller['Navn']}!
 >Du har jo tross alt gått gjennom den tusen ganger før. Hvorfor skal denne gangen skille seg ut?
 >Så snart du setter foten din på stien, vet du at det ikke er noen veg tilbake nå
 """)
+time.sleep(10)
 
 class singleEvents:
 
@@ -101,25 +107,31 @@ class singleEvents:
         Tar automatisk inn variabelen "self", ettersom funksjonen er spesifikk for en klasse
         """
         print(self.beskrivelse) #printer først ut beskrivelsen for å sette ~stemmningen~
-        print(self.hvaSkjer) #printer ut hva som skjer og hva spilleren har muligheten til å gjøre
-        resultat = input("    >") #henter inn hvilken index resultatet skal komme fra og trekker fra 1 pga måten python bruker indekser på
-        if resultat == "Rick Astley": #lite Easter Egg for alle singleEvents ;)
-            print("Rick Astley hører ditt skrik om hjelp, og kommer for å redde deg")
-            endreTilstand("rickern")
-        else:
-            resultat = int(resultat)-1
-            if type(self.resultat[resultat]) == tuple: #sjekker om resultatet vi har fått er lagret i en tuple, ettersom dette betyr at noe skal endres
+        fortsett = True
+        while fortsett:#bruker en while-løkke som slutter når spilleren skrier inn et gyldig input
+            try: #bruker try- og except-blokker for å være sikker på at det ikke oppstår en error hvis spilleren ikke skriver inn et gyldig input
+                print(self.hvaSkjer) #printer ut hva som skjer og hva spilleren har muligheten til å gjøre
+                resultat = input("    >") #henter inn hvilken index resultatet skal komme fra og trekker fra 1 pga måten python bruker indekser på
+                if resultat == "Rick Astley": #lite Easter Egg for alle singleEvents ;)
+                    print("Rick Astley hører ditt skrik om hjelp, og kommer for å redde deg")
+                    endreTilstand("rickern")
+                else:
+                    resultat = int(resultat)-1
+                    if type(self.resultat[resultat]) == tuple: #sjekker om resultatet vi har fått er lagret i en tuple, ettersom dette betyr at noe skal endres
 #grunnen til at vi skal bruke tupler på den måten vi gjør det på er fordi hvis funksjonen som skal endre på HP/en tilstand bare deklareres inni en tuple med resultatet, vil variabelen endres uansett om det er det valget spilleren tar.
 #å sette enkle str eller int verdier som siste variabel i en tuple gjør det lettere å bare sjekke om resultatet først er en tuple, og så sjekke hva slags verdi som ligger sist i tuplen og endre det som skal endres
 #hvis vi hadde trengt et event der både HP og en tilstand skal endres, kunne man løst dette ved å ha det siste elementet i tuplen være en tuple, og gjort det som en standard at tilstand ligger først og HP ligger sist (dette er også kjent som en "tutupplele")
-                if type(self.resultat[resultat][1]) == int: #sjekker om den siste verdien i tuplen er et tall, ettersom dette betyr at HP-en til spilleren skal endres
-                    endreHP(self.resultat[resultat][1]) #endrer HP-en til spilleren med verdien som ligger sist i tuplen med en funksjon som ligger lengre oppe i koden
-                elif type(self.resultat[resultat][1]) == str: #sjekker om den siste verdien er en str, ettersom dette betyr at en tilstand på endres
-                    endreTilstand(self.resultat[resultat][1])#endrer tilstanden som står bakerst i tuplen slik at den for den boolske verdien True
-                print(self.resultat[resultat][0])#printer ut teksten som står først i tuplen, som er det skriftlige resultatet spilleren skal få
-            else: #hvis resultatet ikke er en tuple, printer vi bare ut resultatet
-                print(self.resultat[resultat])
-            print()
+                        if type(self.resultat[resultat][1]) == int: #sjekker om den siste verdien i tuplen er et tall, ettersom dette betyr at HP-en til spilleren skal endres
+                            endreHP(self.resultat[resultat][1]) #endrer HP-en til spilleren med verdien som ligger sist i tuplen med en funksjon som ligger lengre oppe i koden
+                        elif type(self.resultat[resultat][1]) == str: #sjekker om den siste verdien er en str, ettersom dette betyr at en tilstand på endres
+                            endreTilstand(self.resultat[resultat][1])#endrer tilstanden som står bakerst i tuplen slik at den for den boolske verdien True
+                        print(self.resultat[resultat][0])#printer ut teksten som står først i tuplen, som er det skriftlige resultatet spilleren skal få
+                    else: #hvis resultatet ikke er en tuple, printer vi bare ut resultatet
+                        print(self.resultat[resultat])
+                    print()
+                    fortsett = False
+            except:
+                print(">Du kan kun skrive inn et gyldig tall... \n>La oss ta det fra toppen igjen...")
 
 
 
@@ -147,20 +159,26 @@ class multiEvents(singleEvents):
         """
         #denne metoden gjør egentlig mye av de samme som metoden i superklassen, men den har bare noen par ekstra ledd
         print(self.beskrivelse)
-        print(self.hvaSkjer)
-        forsteResultat = int(input("    >"))-1
-        print(self.hvaSkjerTo[forsteResultat]) #siden vi ikke skal gi et resultat enda, printer vi nå ut hva som skjer basert på den forrige handlingen og gir spilleren nye valgmuligheter
-        andreResultat = int(input("    >"))-1
-        if type(self.resultat[forsteResultat][andreResultat]) == tuple: 
+        fortsett = True
+        while fortsett:
+            try:  
+                print(self.hvaSkjer)  
+                forsteResultat = int(input("    >"))-1
+                print(self.hvaSkjerTo[forsteResultat]) #siden vi ikke skal gi et resultat enda, printer vi nå ut hva som skjer basert på den forrige handlingen og gir spilleren nye valgmuligheter
+                andreResultat = int(input("    >"))-1
+                if type(self.resultat[forsteResultat][andreResultat]) == tuple: 
             #tar samme skjekken for verdier som skal endres på samme måte som i super-klassen, men nå skjekker vi listen som ligger inni listen
-            if type(self.resultat[forsteResultat][andreResultat][1]) == int:
-                endreHP(self.resultat[forsteResultat][andreResultat][1])
-            elif type(self.resultat[forsteResultat][andreResultat][1]) == str:
-                endreTilstand(self.resultat[forsteResultat][andreResultat][1])
-            print(self.resultat[forsteResultat][andreResultat][0])
-        else:
-            print(self.resultat[forsteResultat][andreResultat])
-        print()
+                    if type(self.resultat[forsteResultat][andreResultat][1]) == int:
+                        endreHP(self.resultat[forsteResultat][andreResultat][1])
+                    elif type(self.resultat[forsteResultat][andreResultat][1]) == str:
+                        endreTilstand(self.resultat[forsteResultat][andreResultat][1])
+                    print(self.resultat[forsteResultat][andreResultat][0])
+                else:
+                    print(self.resultat[forsteResultat][andreResultat])
+                print()
+                fortsett = False
+            except:
+                print(">Du kan kun skrive inn et gyldig tall... \n>La oss ta det fra toppen igjen...")
  
 
 #vil anbefale å ha Wordwrap på for dette med mindre du har lyst til å scrolle veldig langt bort for å lese all teksten
