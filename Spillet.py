@@ -47,7 +47,7 @@ print(f""">Hei, {spiller['Navn']}!
     >Det tror jeg du får til... 
     >Lykke til!
         
-    >Du og din bestemor har planlagt en harrytur i lang tid og.
+    >Du og din bestemor har planlagt en harrytur i lang tid.
     >Hun er desverre for gammel til å kjøre selv, men du har ikke en egen bil.
     >Du skal gjennom skogen for å komme til bestemoren din og kjøre hennes volvo 240 til Storlien
     >Desverre bor du på den andre siden av en skummel skog :(
@@ -163,7 +163,7 @@ class multiEvents(singleEvents):
         print()
  
 
-#vil anbefale å ha Wordwrap innstallert for dette med mindre du har lyst til å scrolle veldig langt bort for å lese all teksten
+#vil anbefale å ha Wordwrap på for dette med mindre du har lyst til å scrolle veldig langt bort for å lese all teksten
 mainPathEvents = [
     singleEvents(
         ">Når du går videre inn i skogen, ser du at stien deler seg i to...", 
