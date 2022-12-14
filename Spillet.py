@@ -9,7 +9,9 @@ tilstander = { #en ordbok med tilstander som kan endres til "True" basert på hv
     "venstre":False,
     "snudd": False,
     "kvalm": False,
-    "rickern": False
+    "rickern": False,
+    "forlovet": False,
+    "morder": False
 }
 
 spiller = { #lager en liten ordbok for informasjon om spilleren, ettersom det kun er to viktige ting man trenger å lagre om spilleren: navn og HP
@@ -17,6 +19,11 @@ spiller = { #lager en liten ordbok for informasjon om spilleren, ettersom det ku
 #bruker en placeholder fremfor å legge den inn senere kun fordi det ser bedre ut. Jeg vet at det kommer til å legges til autmoatisk i linjen som tar inn input, dette er kun for estetisk skyld
     "HP": 20 #lagrer HP-en til spilleren, som kun skal endres basert på events senere i spillet
 }
+
+def hvorfor():
+    for i in range (10):
+        print(">Hvorfor gjorde du dette?")
+        time.sleep(0.5)
 
 def endreHP(val:int): #en funksjon som tar inn en verdi og endrer HP-en til spilleren med den verdien, slik at vi kan lage standard-metoder for alle eventene og fortsatt endre på spillerens HP
     """
@@ -85,7 +92,7 @@ class singleEvents:
                     else: #hvis resultatet ikke er en tuple, printer vi bare ut resultatet
                         print(self.resultat[resultat])
                     print()
-                    fortsett = False
+                fortsett = False
             except:
                 print(">Du kan kun skrive inn et gyldig tall... \n>La oss ta det fra toppen igjen...")
 
@@ -140,7 +147,7 @@ class multiEvents(singleEvents):
                         else:
                             print(self.resultat[forsteResultat][andreResultat])
                         print()
-                        fortsett = False
+                fortsett = False
             except:
                 print(">Du kan kun skrive inn et gyldig tall... \n>La oss ta det fra toppen igjen...")
  
@@ -258,6 +265,33 @@ hoyreEvents = [
             ]
         ]
     ),
+
+    multiEvents(
+        ">Fuglene kvitrer rundt deg, og solen skinner varmt på ditt kinn",
+        ">Plutselig ser du en skjønn dame gå på stien foran deg. \n>Hun snur seg og ser deg \n>Hun sakker ned, som om hun venter på deg. \n>Hva vil du gjøre? \n>1: Introduser deg selv (høfflig), \n>2: introduser deg selv (slemt) \n>3:Løfte en nærtliggende stein og kaste den på henne",
+        [
+            ">Hun hilser tilbake \n>Dere har en hyggelig samtale, og du føler virkelig at dere har en connection. \n>Du har ikke lyst til å miste henne når dere går fra hverandre på stien. \n>Hva vil du gjøre?\n>1: Kysse henne \n>2: Fri \n>3: Ikke gjøre noe",
+            "",
+            ">Du går bort til henne og drar frem alle banneordene bestemora di noen gang har lært deg \n>Agnes, som du lærer at hun heter, finner sine ord og skjeller deg ut \n>Du har aldri møtt noen som henne \n>Hva vil du gjøre? \n>1: Fri \n>2: Gå videre",
+            ">Du holder øyekontakt imens du plukker opp steinen \n>Hun ser forvirret på deg imens du sikter \n>Du kaster den. \n>Hun faller ned på bakken \n>Hjernen tyter ut av en diger sprekk \n>Begge øya spretter ut \n>'Å nei' tenker Agnes \n>'Jeg ser ikke ut!' \n\n>Hva vil du gjøre? \n>1: Begrave kroppen \n>2: Spise henne \n>3: Forlat åstedet"
+        ],
+        [
+            [
+                (">Du jobber opp motet og kysser henne \n>Hun ser forskrekket på deg \n>Hun slår deg på kinnet, hardt \n>Du mister 12HP", -12),
+                (">Selv om du ikke har noen ring, faller du ned på (ett) kne \n>Agnes, som du har lært at du heter, begynner å gråte \n>Hun sier 'Ja'", "forlovet"),
+                ">Det begynner å bli sent, du vet at du må komme deg videre \n>Motvillig, sier dere hade \n>Du vet at du alltid kommer til å tenkte på hva som Kunne vært \n>Du innser at Richard Siken hadde rett \n>Noen må dra først. Dette er en veldig gammel historie. Det finnes ingen annen versjon av denne historien"
+            ],
+            [
+                "Hallo",
+                "Hallo"
+            ],
+            [
+                "",
+                (">", "kvalm"),
+                (f">Du forlater åstedet, alltid gjemsøkt av hva du har gjort. \n>Hvorfor gjorde du dette? \n>Hvorfor gjorde du dette?\n>Hvorfor gjorde du dette?\n>Hvorfor gjorde du dette?\n>Hvorfor gjorde du dette? \n\n>...\n>Du fortsetter nedover stien","morder")
+            ]
+        ]
+    )
 ]
 
 def velgerEvent(liste:list): #en felles funksjon for å velge inn ulike events
@@ -317,11 +351,11 @@ print("""
 >Du står på kanten av en stor, mørk skog
 >Trærne virker høyere enn de vanligvis gjør
 >Du vet at på andre siden av skogen venter det en artig tur og mye tobakk
->Selv om skoge virker større og mørkere nå enn den har gjort før, begynner du å gå inn
+>Selv om skogen virker større og mørkere nå enn den har gjort før, begynner du å gå inn
 >Du har jo tross alt gått gjennom den tusen ganger før. Hvorfor skal denne gangen skille seg ut?
 >Så snart du setter foten din på stien, vet du at det ikke er noen veg tilbake nå
 """)
-time.sleep(10)
+time.sleep(7)
 
 while spillOver():
     #sjekker hvilken retning spilleren går i og gir et event fra den tilhørende listen
