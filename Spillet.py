@@ -96,6 +96,10 @@ class singleEvents:
                         trengerHjelp()
                         print(self.hvaSkjer)
                         resultat = input("    >")
+                    elif resultat.lower() == "hp":
+                        print(f"Du har {spiller['HP']}")
+                        print(self.hvaSkjer)
+                        resultat = input("    >")
                     resultat = int(resultat)-1
                     if type(self.resultat[resultat]) == tuple: #sjekker om resultatet vi har fått er lagret i en tuple, ettersom dette betyr at noe skal endres
 #grunnen til at vi skal bruke tupler på den måten vi gjør det på er fordi hvis funksjonen som skal endre på HP/en tilstand bare deklareres inni en tuple med resultatet, vil variabelen endres uansett om det er det valget spilleren tar.
