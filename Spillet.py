@@ -205,10 +205,10 @@ venstreEvents = [
     ), 
     singleEvents(
         ">Du går gjennom skogen. Du hører små fotskritt i treet nært deg", 
-        ">Det er et ekorn! Hva vil du gjøre?: \n>1: gi ekornet en eikenøtt \n>2: ignorer", 
+        ">Det er et ekorn! Hva vil du gjøre?: \n>1: gi ekornet en eikenøtt \n>2: ignorere ekornet", 
         [
-            (">Gratulerer! Du har fått en ny venn!", "ekkorn"), 
-            ">Du ignorerte ekkornet. Du føler at det ikke var det lureste valget"
+            (">Gratulerer! Du har fått en ny venn! \n>Du kaller han Todd :)", "ekkorn"), 
+            (">Du ignorerte ekornet \n>Du ser at ekornet begynner å bli sur på deg \n>Kanskje du bare burde gitt det den eikenøtta... \n>Å nei! \n>Ekornet ble surt nok til å gå til angrep! \n>Du blir klort opp av ekornet og mister 5HP", -5)
         ]
     ),
     singleEvents(
@@ -290,17 +290,17 @@ hoyreEvents = [
 
     multiEvents(
         ">Fuglene kvitrer rundt deg, og solen skinner varmt på ditt kinn",
-        ">Plutselig ser du en skjønn dame gå på stien foran deg. \n>Hun snur seg og ser deg \n>Hun sakker ned, som om hun venter på deg. \n>Hva vil du gjøre? \n>1: Introduser deg selv (høfflig), \n>2: Introduser deg selv (slemt) \n>3: Løfte en nærtliggende stein og kaste den på henne",
+        ">Plutselig ser du en vakker dame gå på stien foran deg. \n>Hun snur seg og ser deg \n>Hun sakker ned, som om hun venter på deg. \n>Hva vil du gjøre? \n>1: Introduser deg selv (høfflig), \n>2: Introduser deg selv (uhøfflig) \n>3: Løfte en nærtliggende stein og kaste den på henne",
         [
-            ">Hun hilser tilbake \n>Dere har en hyggelig samtale, og du føler virkelig at dere har en connection. \n>Du har ikke lyst til å miste henne når dere går fra hverandre på stien. \n>Hva vil du gjøre?\n>1: Kysse henne \n>2: Fri \n>3: Ikke gjøre noe",
+            ">Hun hilser tilbake \n>Dere har en hyggelig samtale, og du føler virkelig at dere har en connection. \n>Du har aldri ledd like mye som du har med henne \n>Du har aldri følt deg like fortsått, like sett som du har med henne \n>Du vet at hvis du ikke sier noe, kommer du alltid til å tenke på hva du kunne gjort anderledes hvis du bare hadde sagt noe \n>Du har ikke lyst til å miste henne når stiene dere er på (i livet) deler seg \n>Hva vil du gjøre?\n>1: Kysse henne \n>2: Fri til henne \n>3: Ingenting.",
             ">Du går bort til henne og drar frem alle banneordene bestemora di noen gang har lært deg \n>Agnes, som du lærer at hun heter, finner sine ord og skjeller deg ut \n>Du har aldri møtt noen som henne \n>Hva vil du gjøre? \n>1: Fri \n>2: Gå videre, \n>3:Equal rights, equal fights",
-            ">Du holder øyekontakt imens du plukker opp steinen \n>Hun ser forvirret på deg imens du sikter \n>Du kaster den. \n>Hun faller ned på bakken \n>Hjernen tyter ut av en diger sprekk \n>Begge øya spretter ut \n>'Å nei' tenker Agnes \n>'Jeg ser ikke ut!' \n\n>Hva vil du gjøre? \n>1: Begrave kroppen \n>2: Spise henne \n>3: Forlat åstedet"
+            ">Du holder øyekontakt imens du plukker opp steinen \n>Hun ser forvirret på deg imens du sikter \n>Du kaster den. \n>Hun faller ned på bakken \n>Hjernen tyter ut av en diger sprekk \n>Begge øya spretter ut \n>'Å nei' tenker Agnes \n>'Jeg ser ikke ut!' \n\n>Hva gjør du nå? \n>1: Begrav kroppen \n>2: Spis henne \n>3: Forlat åstedet"
         ],
         [
             [
                 (">Du jobber opp motet og kysser henne \n>Hun ser forskrekket på deg \n>Hun slår deg på kinnet, hardt \n>Du mister 12HP", -12),
                 (">Selv om du ikke har noen ring, faller du ned på (ett) kne \n>Agnes, som du har lært at du heter, begynner å gråte \n>Hun sier 'Ja'", "forlovet"),
-                ">Det begynner å bli sent, du vet at du må komme deg videre \n>Motvillig, sier dere hade \n>Du vet at du alltid kommer til å tenkte på hva som kunne vært \n>Du innser at Richard Siken hadde rett \n>'Someone has to leave first. This is a very old story. There's no other version of this story'"
+                ">Det begynner å bli sent, du vet at du må komme deg videre \n>Motvillig, sier dere hade \n>Du vet at du alltid kommer til å tenkte på hva som kunne vært \n>Men noen må dra først. Dette er en veldig gammel historie. Det finnes ingen annen versjon av denne historien \n>Du fortsetter å gå, du kan ikke se tilbake nå. \n>Ikke se tilbake \n>Aldri se tilbake \n\n>Du ser ikke tilbake\n\n>Hun er borte nå, du kan ikke gjøre noe med det\n>Du faller ned på stien, tårene nekter å komme \n>Du vet ikke hvor lenge du ligger der \n>Det føles ut som... \n>Du vet ikke hva det føles ut som... \n\n>Du reiser deg opp og fortsetter på stien"
             ],
             [
                 (">Du er imponert av sarkasmen og kunnskapen hennes. \n>Du faller ned på kne \n>Agnes er ikke imponert, og slår til deg, hardt \n>Du mister 10HP", -10),
@@ -336,7 +336,7 @@ def spillIkkeOver():
 spiller["Navn"] = input("Hva heter du?: ") #lar spilleren velge sitt eget navn, som kommer til å ha en effekt på introen ol.
 
 #printer ut introduksjonen til spilleren
-print(f""">Hei, {spiller['Navn']}!
+print(f"""    >Hei, {spiller['Navn']}!
 
     >Velkommen til spillet vårt! 
     >Dette er et tekstbasert spill der du får noen valg. 
@@ -420,7 +420,7 @@ elif tilstander["ekkorn"]==True and tilstander["kvalm"]==True:
     print(f"""
         >Etter en lang, og slitsom, tur er du endelig kommet gjennom skogen!
         >Du ser at rett ned stien sitter bestemoren din i hagen sin i en god gammal gyngestol
-        >"Du e så treig {spiller['Navn']}
+        >"Du e så treig {spiller['Navn']}"
         >Plutselig kjenner du at det surrer i magen
         >Det er den rare ekle soppen du spiste!
         >Du kjenner at det kommer opp å whooooosshshhssh
