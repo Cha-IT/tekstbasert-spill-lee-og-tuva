@@ -4,14 +4,14 @@ import time
 tilstander = { #en ordbok med tilstander som kan endres til "True" basert på hva spilleren gjør
 #bruker en ordbok for disse tilstandene fordi det gjør det lettere å endre de nødvendige variablene på en generell måte i med klassene
     "rickern": False,
-    "høyre":False, #denne variabelen og den under sjekker hvilken retning spilleren går i
-    "ekkorn": False, #variabel som endres hvis spilleren får et ekkorn som en venn
-    "høy": False, #variabel som skal endres hvis spilleren spiser fleinsopp
-    "venstre":False,
     "snudd": False,
-    "kvalm": False,
+    "høyre":False, 
     "forlovet": False,
-    "morder": False
+    "morder": False,
+    "høy": False, 
+    "venstre":False,
+    "ekkorn": False,
+    "kvalm": False
 }
 
 spiller = { #lager en liten ordbok for informasjon om spilleren, ettersom det kun er to viktige ting man trenger å lagre om spilleren: navn og HP
@@ -19,11 +19,6 @@ spiller = { #lager en liten ordbok for informasjon om spilleren, ettersom det ku
 #bruker en placeholder fremfor å legge den inn senere kun fordi det ser bedre ut. Jeg vet at det kommer til å legges til autmoatisk i linjen som tar inn input, dette er kun for estetisk skyld
     "HP": 20 #lagrer HP-en til spilleren, som kun skal endres basert på events senere i spillet
 }
-
-def hvorfor():
-    for i in range (10):
-        print(">Hvorfor gjorde du dette?")
-        time.sleep(0.5)
 
 def endreHP(val:int): #en funksjon som tar inn en verdi og endrer HP-en til spilleren med den verdien, slik at vi kan lage standard-metoder for alle eventene og fortsatt endre på spillerens HP
     """
