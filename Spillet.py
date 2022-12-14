@@ -347,7 +347,7 @@ elif tilstander["ekkorn"]==True and tilstander["kvalm"]==True:
         >Så ute av ingenting hopper ekorn kameraten din av skulderen å begynner å spise oppkastet ditt?
         >Du og bestemor synes dette er veldig ekkelt. Dere prøver å skynde dere inn i bilen
         \n
-        >GOOD ENDING
+        >GAME OVER
         >TRY AGAIN? 
         """)
 elif tilstander["ekkorn"]==True:
@@ -365,10 +365,28 @@ elif tilstander["ekkorn"]==True:
         >Du snur deg tilbake, men du ser ikke bestemoren din lengre? Det er blod overalt og alt du ser....
         >er ekornet som står på den blodige strikket-genseren til din avdøde bestemor...\n
         >GAME OVER
-        >TRY AGAIN?"
-        """)
+        >TRY AGAIN?
+        """)    
 elif tilstander["høy"]==True:
-    print("Kjør rehab ending")
+    print(f"""
+        >Etter en lang, og veldig merkelig tur...., kommer du endelig deg gjennom skogen!
+        >Du ser deg rundt og finner bestemoren din
+        >Hun sitter i en gammel gyngestol og holder på å sovne...
+        >"Du brukt no ganske lang tid no da {spiller['Navn']}!"
+        >Bestemoren stirrer deg opp og ned, hun merker det er noe rart ved deg?
+        >"Kom no så går vi te bila"
+        >Du er klar for å kjøre, noe som du virkelig ikke burde gjøre i din påvirkede tilstand, men
+        >plutselig setter bestemoren din seg bak rattet?
+        >Du setter deg i passasjer-setet og dovner litt bort..
+        >Når du våkner sitter du fast?
+        >Du ser deg rundt og kjenner igjen at du har havnet på st. olavs?
+        >"D e for ditt eget bøeste..."
+        >En tåre rinner ned det kalde kinnet til bestemoren din mens du blir trillet inn til
+        >Rehab for rusmisbruk...
+        \n
+        >GAME OVER
+        >TRY AGAIN?
+    """)
 elif tilstander["snudd"] == True:
     print("Kjør 'Bestemor dør av abstinenser' ending")
 elif tilstander["kvalm"]==True:
