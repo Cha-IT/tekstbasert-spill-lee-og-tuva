@@ -306,7 +306,7 @@ def velgerEvent(liste:list): #en felles funksjon for å velge inn ulike events
     liste.pop(valg)
 
 def spillOver():
-    if len(hoyreEvents)!=0 and len(venstreEvents)!=0 and spiller["HP"]>0 and tilstander["snudd"] != True and tilstander["rickern"] != True: #skjekker om de ulike kriteriene for at spillet skal fortsette er oppfylt
+    if len(hoyreEvents)!=0 and len(venstreEvents)!=0 and spiller["HP"]>0 and tilstander["snudd"] != True and tilstander["rickern"]== False: #skjekker om de ulike kriteriene for at spillet skal fortsette er oppfylt
         return True #hvis kriteriene er oppfylt, returnerer funksjonen "True" og spillet kommer til å fortsette
     else:
         return False #hvis alle kriteriene ikke er oppfylt, returnerer funksjonen "False", og spillet avsluttes, og man for den passende endingen
@@ -449,7 +449,7 @@ elif tilstander["kvalm"]==True:
     >Hun setter på p7 klem på radioen og finner fram strikketøyet sitt
     >Du setter deg i bilen og kjører ut innkjørselen
     >Dere kommer et stykke før du kjenner den uggne følelsen i magen din igjen..
-    >Du kjenner at den soppen du spiste tidligere, virkelig har laget trøbbel i magen
+    >Du kjenner at noe du spiste tidligere, virkelig har laget trøbbel i magen
     >Du blir kvalmere og kvalmerer mens dere kjører, men dere er på E6'n og kan ikke kjøre til side
     >Du prøver å holde kvalmen nede, men det finnes grenser!
     >Du klarer ikke holde det lengre, og det kommer overalt
@@ -461,6 +461,32 @@ elif tilstander["kvalm"]==True:
     >TRY AGAIN?
     """)
 elif tilstander["rickern"] == True:
-    print("Kjør rick astley-ending")
+    print(f"""
+        >Du roper ut etter Rick Astley
+        >DU FÅR SVAR?
+        >Du hører en fjern melodi som kommer nærmere og nærmere...
+        >Rick flyr over deg!
+        >Han svever ned og plukker deg opp
+        >Han flyr deg over skogen og du ser alt det fæle som kunne ha skjedd
+        >Etter bare noen minutter er du kommet over hele skogen
+        >Rick setter deg forsiktig ned på bakken
+        >I det dere lander får han og bestemoren din øyekontakt med en gang
+        >Du kan nesten se hjertene i øynene deres...
+        >Noen uker senere
+        >Du er invitert til din bestemor og Rick Astleys bryllup
+        >Du er blomsterpike og ser familie og venner med tårer i øynene
+        >"Do you , Rick Astley god amongst men, take Brunhilde as your lawfully wedded wife?"
+        >"I do"
+        >"And do you, Brunhilde Eriksen, take Rick Astley as your lawfully wedded husband?"
+        >"I do"
+        >"You may kiss the bride!"
+        >Kirken dere er i bryter ut i sang!
+        >For en lykkelig dag <3
+        >Du hører en orgel versjon av "Never gonna' give you up" spiller mens de går ut av kirken
+        >Dere levde lykkelig resten av deres dager
+        
+        >GAME OVER
+        >TRY AGAIN?
+    """)
 else:
     print("vanlig ending")
