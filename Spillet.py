@@ -399,6 +399,28 @@ while spillIkkeOver():
 #sjekker de ulike tilstandene spilleren muligens har endret på i løpet av spillet, og ser hvilken ending spilleren da får
 if spiller["HP"]<=0:
     print(">GAME OVER \n>TRY AGAIN?")
+elif tilstander["morder"] == True:
+    print(f"""
+        >Du kommer deg ut av skogen, men til hvilken pris?
+        >Du har blod på hendene, på klærne dine du lukter helt forferdelig
+        >Du hører sirener i bakgrunnen
+        >Du møter blikket til bestemoren din
+        >Hun vet
+        >Hun vet hva du har gjort
+        >Hun klarer ikke møte blikket ditt
+        >Du faller ned på knærne dine og bare detter sammen
+        >Hva har du gjort?
+        >Politiet kommer og setter deg i håndjern
+        >Du setter deg i bilden og ser ut vinduet
+        >Bestemoren møter blikket ditt med tårer i fjeset
+        >Du vil aldri kunne dra på en harrytur igjen...
+
+        >GAME OVER
+        >TRY AGAIN?
+    """)
+elif tilstander["forlovet"] == True and tilstander["høy"] == True:
+    print("crack cocaine frolovet ending")
+
 elif tilstander["ekkorn"]==True and tilstander["kvalm"]==True:
     print(f"""
         >Etter en lang, og slitsom, tur er du endelig kommet gjennom skogen!
