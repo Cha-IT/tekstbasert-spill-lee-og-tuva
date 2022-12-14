@@ -272,7 +272,7 @@ def velgerEvent(liste:list): #en felles funksjon for å velge inn ulike events
     liste.pop(valg)
 
 def spillOver():
-    if len(hoyreEvents)!=0 and len(venstreEvents)!=0 and spiller["HP"]>0 and tilstander["snudd"] != True and tilstander["rickern"] != True: #skjekker om de ulike kriteriene for at spillet skal fortsette er oppfylt
+    if len(hoyreEvents)!=0 and len(venstreEvents)!=0 and spiller["HP"]>0 and tilstander["snudd"] != True and tilstander["rickern"]== False: #skjekker om de ulike kriteriene for at spillet skal fortsette er oppfylt
         return True #hvis kriteriene er oppfylt, returnerer funksjonen "True" og spillet kommer til å fortsette
     else:
         return False #hvis alle kriteriene ikke er oppfylt, returnerer funksjonen "False", og spillet avsluttes, og man for den passende endingen
