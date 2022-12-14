@@ -76,7 +76,6 @@ class singleEvents:
                 print(self.hvaSkjer) #printer ut hva som skjer og hva spilleren har muligheten til å gjøre
                 resultat = input("    >") #henter inn hvilken index resultatet skal komme fra og trekker fra 1 pga måten python bruker indekser på
                 if resultat == "Rick Astley": #lite Easter Egg for alle events ;)
-                    print("Rick Astley hører ditt skrik om hjelp, og kommer for å redde deg")
                     endreTilstand("rickern")
                 else:
                     resultat = int(resultat)-1
@@ -128,13 +127,11 @@ class multiEvents(singleEvents):
                 print(self.hvaSkjer)  
                 forsteResultat = int(input("    >"))-1
                 if forsteResultat == "Rick Astley": #lite Easter Egg for alle events ;)
-                    print("Rick Astley hører ditt skrik om hjelp, og kommer for å redde deg")
                     endreTilstand("rickern")
                 else:
                     print(self.hvaSkjerTo[forsteResultat]) #siden vi ikke skal gi et resultat enda, printer vi nå ut hva som skjer basert på den forrige handlingen og gir spilleren nye valgmuligheter
                     andreResultat = int(input("    >"))-1
                     if andreResultat == "Rick Astley": #lite Easter Egg for alle events ;)
-                        print("Rick Astley hører ditt skrik om hjelp, og kommer for å redde deg")
                         endreTilstand("rickern")
                     else:
                         if type(self.resultat[forsteResultat][andreResultat]) == tuple: 
