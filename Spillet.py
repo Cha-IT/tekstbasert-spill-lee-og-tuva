@@ -310,7 +310,7 @@ hoyreEvents = [
             [
                 ">Du begynner å grave et hull med hendene dine. \n>Jorden samler seg under fingerneglene dine \n>Det gjør vondt, men du fortsetter å grave. \n>Så snart hullet er dypt nok, dytter du kvinnen inn i hullet. \n>Du tetter hullet med jorden, og legger mose på toppen slik at ingen skal se Hva Som Er Der. \n>Du håper at ingen begynner å lete her \n>Du fortsetter nedover stien",
                 (">Du begynner å spise de mest gjenkjennelige delene av kroppen hennes, så begynner du å spise lårene hennes. \n>På et tidspunkt klarer du ikke å spise mere, både fordi det er menneskekjøtt, og fordi du har spist for mye \n>Du gjemmer det du ikke klarer å spise i en lyng, og håper at dyrene i skogen finner henne før politiet gjør det", "morder"),
-                (">Du forlater åstedet, alltid gjemsøkt av hva du har gjort. \n>Hvorfor gjorde du dette? \n>Hvorfor gjorde du dette?\n>Hvorfor gjorde du dette?\n>Hvorfor gjorde du dette?\n>Hvorfor gjorde du dette? \n\n>...\n>Du fortsetter nedover stien","morder")
+                (">Du forlater åstedet, alltid hjemsøkt av hva du har gjort. \n>Hvorfor gjorde du dette? \n>Hvorfor gjorde du dette?\n>Hvorfor gjorde du dette?\n>Hvorfor gjorde du dette?\n>Hvorfor gjorde du dette? \n\n>...\n>Du fortsetter nedover stien","morder")
             ]
         ]
     )
@@ -397,7 +397,7 @@ if spiller["HP"]<=0:
 elif tilstander["morder"] == True:
     print(f"""
         >Du kommer deg ut av skogen, men til hvilken pris?
-        >Du har blod på hendene, på klærne dine du lukter helt forferdelig
+        >Du har blod på hendene, på klærne dine. Du lukter helt forferdelig
         >Du hører sirener i bakgrunnen
         >Du møter blikket til bestemoren din
         >Hun vet
