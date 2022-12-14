@@ -491,5 +491,14 @@ else:
     >kommer du deg gjennom!
     >Du er i god form og kjenner det ikke er noe galt som kan skje nå
     >Du går nedover stien videre til bestemoren din
-    >
+    >"Du brukt lang tid"
+    >Hun ser litt gretten ut mens dere går til bilen, men ingenting skjer
+    >Dere kommer dere til storlien og ser en stor plakat som leser:
+        "Erbjudande på snusförpackningar!"   
+            (Tilbud på snuspakker!)
+    >Dere kjøper masse snus og godteri og kjører trygt hjem
+    >Du og bestemoren din osvner på soffaen mens Jon Almaas "praktisk info" går i bakgrunnen
+    
+    >GAME OVER
+    >TRY AGAIN?
     """)
