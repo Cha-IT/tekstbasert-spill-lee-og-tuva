@@ -427,6 +427,14 @@ elif tilstander["kvalm"]==True:
     >TRY AGAIN?
     """)
 elif tilstander["rickern"] == True:
-    print("Kjør rick astley-ending")
+    print(f"""
+        >Du roper ut etter Rick Astley
+        >DU FÅR SVAR?
+        >Du hører en fjern melodi som kommer nærmere og nærmere...
+        >Rick flyr over deg!
+        >Han svever ned og plukker deg opp
+        >Han flyr deg over skogen og du ser alt det fæle som kunne ha skjedd
+        >Etter bare noen minutter er du kommet gjennom
+    """)
 else:
     print("vanlig ending")
