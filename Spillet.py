@@ -44,6 +44,25 @@ def endreTilstand(type:str): #en funksjon som tar inn en type tilstand som skal 
     """
     tilstander[type] = True
 
+def trengerHjelp():
+    """
+    En funksjon som kan gi spilleren informasjon om deres hp-tistand og deres andre tilstander
+    """
+    print(f""" 
+
+        Du spørr om hjelp!
+            Om spillet:
+                Du får et spørsmål der du får noen valgmuligheter, og skriver tallet
+                som korrensponderer med det valget du vil ta
+        Du kan også sjekke HP-tilstanden din ved å skrive:
+            HP
+        Du kan også sjekke om du har noen andre tilstander/virkninger på deg ved å skrive:
+            Tilstander
+        
+        Håper du fikk nytte av dette! :)
+                
+    """)
+
 
 
 class singleEvents:
@@ -78,6 +97,10 @@ class singleEvents:
                 if resultat.lower() == "rick astley": #lite Easter Egg for alle events ;)
                     endreTilstand("rickern")
                 else:
+                    if resultat.lower() == "hjelp":
+                        trengerHjelp()
+                        print(self.hvaSkjer)
+                        resultat = input("    >")
                     resultat = int(resultat)-1
                     if type(self.resultat[resultat]) == tuple: #sjekker om resultatet vi har fått er lagret i en tuple, ettersom dette betyr at noe skal endres
 #grunnen til at vi skal bruke tupler på den måten vi gjør det på er fordi hvis funksjonen som skal endre på HP/en tilstand bare deklareres inni en tuple med resultatet, vil variabelen endres uansett om det er det valget spilleren tar.
@@ -128,7 +151,12 @@ class multiEvents(singleEvents):
                 forsteResultat = input("    >")
                 if forsteResultat.lower() == "rick astley": #lite Easter Egg for alle events ;)
                     endreTilstand("rickern")
+                    
                 else:
+                    if forsteResultat.lower() == "hjelp":
+                        trengerHjelp()
+                        print(self.hvaSkjer)
+                        forsteResultat = input("    >")
                     forsteResultat = int(forsteResultat)-1
                     print(self.hvaSkjerTo[forsteResultat]) #siden vi ikke skal gi et resultat enda, printer vi nå ut hva som skjer basert på den forrige handlingen og gir spilleren nye valgmuligheter
                     andreResultat = input("    >")
@@ -328,6 +356,9 @@ print(f""">Hei, {spiller['Navn']}!
     >Du må komme deg gjennom skogen og til bestemors hus
     >Du vil vel ikke gå glipp av en harrytur til Sverige, vil du det?
 
+                    HVIS DU TRENGER HJELP
+                        SKRIV "hjelp"
+
     >La oss begynne...
 
 """)
@@ -499,8 +530,8 @@ else:
         "Erbjudande på snusförpackningar!"   
             (Tilbud på snuspakker!)
     >Dere kjøper masse snus og godteri og kjører trygt hjem
-    >Du og bestemoren din osvner på soffaen mens Jon Almaas "praktisk info" går i bakgrunnen
-    
+    >Du og bestemoren din sovner på soffaen mens Jon Almaas "praktisk info" går i bakgrunnen
+
     >GAME OVER
     >TRY AGAIN?
     """)
