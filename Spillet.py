@@ -486,4 +486,10 @@ elif tilstander["rickern"] == True:
         >TRY AGAIN?
     """)
 else:
-    print("vanlig ending")
+    print(f"""
+    >Etter en relativt trygg tur gjennom skogen
+    >kommer du deg gjennom!
+    >Du er i god form og kjenner det ikke er noe galt som kan skje nå
+    >Du går nedover stien videre til bestemoren din
+    >
+    """)
