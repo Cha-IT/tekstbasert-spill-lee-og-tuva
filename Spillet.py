@@ -3,13 +3,13 @@ import time
 
 tilstander = { #en ordbok med tilstander som kan endres til "True" basert på hva spilleren gjør
 #bruker en ordbok for disse tilstandene fordi det gjør det lettere å endre de nødvendige variablene på en generell måte i med klassene
+    "rickern": False,
+    "høyre":False, #denne variabelen og den under sjekker hvilken retning spilleren går i
     "ekkorn": False, #variabel som endres hvis spilleren får et ekkorn som en venn
     "høy": False, #variabel som skal endres hvis spilleren spiser fleinsopp
-    "høyre":False, #denne variabelen og den under sjekker hvilken retning spilleren går i
     "venstre":False,
     "snudd": False,
     "kvalm": False,
-    "rickern": False,
     "forlovet": False,
     "morder": False
 }
