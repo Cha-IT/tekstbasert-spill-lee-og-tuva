@@ -376,9 +376,44 @@ elif tilstander["høy"]==True:
         >TRY AGAIN?
     """)
 elif tilstander["snudd"] == True:
-    print("Kjør 'Bestemor dør av abstinenser' ending")
+    print(f"""
+    >Du snudde
+    >Du ORKER ikke å prøve å komme deg rundt alt dette
+    >Du går tilbake stien du NETTOP startet på
+    >Du drar hjem og legger deg ned og sover, som en lat fis
+    >Neste dag våkner du til en telefon som ringer
+    >Det er moren din, hun er på gråten?
+    >Det viser seg at bestemoren din døde denne natten av tobakk abstinenser!
+    \n
+    >Om du bare hadde ORKET å dra rundt den kampesteinen og det treet
+    >Da hadde hun kanskje overlevd...
+    \n
+    >GAME OVER 
+    >TRY AGAIN?
+    """)
 elif tilstander["kvalm"]==True:
-    print("kjør spy-ending :)")
+    print(f"""
+    >Endelig, etter mange timer, er du kommet gjennom skogen!
+    >Du ser deg rundt og ser bestemoren din, hun gynger i den samme stolen som hun alltid gjør
+    >Du kjenner noe uggent i magen?
+    >Du ignorer det for nå og går til bestemoren din
+    >Hun er glad for å se deg, selv om det ikke virker slik
+    >"Prøv å bruk litt lenger tid neste gang da!"
+    >Hun går rett til bilen og setter seg i passasjer-setet
+    >Hun setter på p7 klem på radioen og finner fram strikketøyet sitt
+    >Du setter deg i bilen og kjører ut innkjørselen
+    >Dere kommer et stykke før du kjenner den uggne følelsen i magen din igjen..
+    >Du kjenner at den soppen du spiste tidligere, virkelig har laget trøbbel i magen
+    >Du blir kvalmere og kvalmerer mens dere kjører, men dere er på E6'n og kan ikke kjøre til side
+    >Du prøver å holde kvalmen nede, men det finnes grenser!
+    >Du klarer ikke holde det lengre, og det kommer overalt
+    >På deg, på bestemoren din og på vinduet
+    >Du klarer ikke se veien lengre og i en pannikk tilstand snurr du bare på rattet
+    >Dere krasjer i en fjellvegg langs veien og det var det siste dere gjorde...
+    \n
+    >GAME OVER
+    >TRY AGAIN?
+    """)
 elif tilstander["rickern"] == True:
     print("Kjør rick astley-ending")
 else:
