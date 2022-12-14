@@ -75,7 +75,7 @@ class singleEvents:
             try: #bruker try- og except-blokker for å være sikker på at det ikke oppstår en error hvis spilleren ikke skriver inn et gyldig input
                 print(self.hvaSkjer) #printer ut hva som skjer og hva spilleren har muligheten til å gjøre
                 resultat = input("    >") #henter inn hvilken index resultatet skal komme fra og trekker fra 1 pga måten python bruker indekser på
-                if resultat == "Rick Astley": #lite Easter Egg for alle events ;)
+                if resultat.lower() == "rick astley": #lite Easter Egg for alle events ;)
                     endreTilstand("rickern")
                 else:
                     resultat = int(resultat)-1
@@ -125,15 +125,17 @@ class multiEvents(singleEvents):
         while fortsett:
             try:  
                 print(self.hvaSkjer)  
-                forsteResultat = int(input("    >"))-1
-                if forsteResultat == "Rick Astley": #lite Easter Egg for alle events ;)
+                forsteResultat = input("    >")
+                if forsteResultat.lower() == "rick astley": #lite Easter Egg for alle events ;)
                     endreTilstand("rickern")
                 else:
+                    forsteResultat = int(forsteResultat)-1
                     print(self.hvaSkjerTo[forsteResultat]) #siden vi ikke skal gi et resultat enda, printer vi nå ut hva som skjer basert på den forrige handlingen og gir spilleren nye valgmuligheter
-                    andreResultat = int(input("    >"))-1
-                    if andreResultat == "Rick Astley": #lite Easter Egg for alle events ;)
+                    andreResultat = input("    >")
+                    if andreResultat.lower() == "rick astley": #lite Easter Egg for alle events ;)
                         endreTilstand("rickern")
                     else:
+                        andreResultat = int(andreResultat)-1
                         if type(self.resultat[forsteResultat][andreResultat]) == tuple: 
                 #tar samme skjekken for verdier som skal endres på samme måte som i super-klassen, men nå skjekker vi listen som ligger inni listen
                             if type(self.resultat[forsteResultat][andreResultat][1]) == int:
@@ -265,7 +267,7 @@ hoyreEvents = [
 
     multiEvents(
         ">Fuglene kvitrer rundt deg, og solen skinner varmt på ditt kinn",
-        ">Plutselig ser du en skjønn dame gå på stien foran deg. \n>Hun snur seg og ser deg \n>Hun sakker ned, som om hun venter på deg. \n>Hva vil du gjøre? \n>1: Introduser deg selv (høfflig), \n>2: introduser deg selv (slemt) \n>3:Løfte en nærtliggende stein og kaste den på henne",
+        ">Plutselig ser du en skjønn dame gå på stien foran deg. \n>Hun snur seg og ser deg \n>Hun sakker ned, som om hun venter på deg. \n>Hva vil du gjøre? \n>1: Introduser deg selv (høfflig), \n>2: Introduser deg selv (slemt) \n>3: Løfte en nærtliggende stein og kaste den på henne",
         [
             ">Hun hilser tilbake \n>Dere har en hyggelig samtale, og du føler virkelig at dere har en connection. \n>Du har ikke lyst til å miste henne når dere går fra hverandre på stien. \n>Hva vil du gjøre?\n>1: Kysse henne \n>2: Fri \n>3: Ikke gjøre noe",
             ">Du går bort til henne og drar frem alle banneordene bestemora di noen gang har lært deg \n>Agnes, som du lærer at hun heter, finner sine ord og skjeller deg ut \n>Du har aldri møtt noen som henne \n>Hva vil du gjøre? \n>1: Fri \n>2: Gå videre, \n>3:Equal rights, equal fights",
@@ -275,7 +277,7 @@ hoyreEvents = [
             [
                 (">Du jobber opp motet og kysser henne \n>Hun ser forskrekket på deg \n>Hun slår deg på kinnet, hardt \n>Du mister 12HP", -12),
                 (">Selv om du ikke har noen ring, faller du ned på (ett) kne \n>Agnes, som du har lært at du heter, begynner å gråte \n>Hun sier 'Ja'", "forlovet"),
-                ">Det begynner å bli sent, du vet at du må komme deg videre \n>Motvillig, sier dere hade \n>Du vet at du alltid kommer til å tenkte på hva som Kunne vært \n>Du innser at Richard Siken hadde rett \n>'Someone has to leave first. This is a very old story. There's no other version of this story'"
+                ">Det begynner å bli sent, du vet at du må komme deg videre \n>Motvillig, sier dere hade \n>Du vet at du alltid kommer til å tenkte på hva som kunne vært \n>Du innser at Richard Siken hadde rett \n>'Someone has to leave first. This is a very old story. There's no other version of this story'"
             ],
             [
                 (">Du er imponert av sarkasmen og kunnskapen hennes. \n>Du faller ned på kne \n>Agnes er ikke imponert, og slår til deg, hardt \n>Du mister 10HP", -10),
