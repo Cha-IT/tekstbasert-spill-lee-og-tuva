@@ -268,24 +268,24 @@ hoyreEvents = [
         ">Plutselig ser du en skjønn dame gå på stien foran deg. \n>Hun snur seg og ser deg \n>Hun sakker ned, som om hun venter på deg. \n>Hva vil du gjøre? \n>1: Introduser deg selv (høfflig), \n>2: introduser deg selv (slemt) \n>3:Løfte en nærtliggende stein og kaste den på henne",
         [
             ">Hun hilser tilbake \n>Dere har en hyggelig samtale, og du føler virkelig at dere har en connection. \n>Du har ikke lyst til å miste henne når dere går fra hverandre på stien. \n>Hva vil du gjøre?\n>1: Kysse henne \n>2: Fri \n>3: Ikke gjøre noe",
-            "",
-            ">Du går bort til henne og drar frem alle banneordene bestemora di noen gang har lært deg \n>Agnes, som du lærer at hun heter, finner sine ord og skjeller deg ut \n>Du har aldri møtt noen som henne \n>Hva vil du gjøre? \n>1: Fri \n>2: Gå videre",
+            ">Du går bort til henne og drar frem alle banneordene bestemora di noen gang har lært deg \n>Agnes, som du lærer at hun heter, finner sine ord og skjeller deg ut \n>Du har aldri møtt noen som henne \n>Hva vil du gjøre? \n>1: Fri \n>2: Gå videre, \n>3:Equal rights, equal fights",
             ">Du holder øyekontakt imens du plukker opp steinen \n>Hun ser forvirret på deg imens du sikter \n>Du kaster den. \n>Hun faller ned på bakken \n>Hjernen tyter ut av en diger sprekk \n>Begge øya spretter ut \n>'Å nei' tenker Agnes \n>'Jeg ser ikke ut!' \n\n>Hva vil du gjøre? \n>1: Begrave kroppen \n>2: Spise henne \n>3: Forlat åstedet"
         ],
         [
             [
                 (">Du jobber opp motet og kysser henne \n>Hun ser forskrekket på deg \n>Hun slår deg på kinnet, hardt \n>Du mister 12HP", -12),
                 (">Selv om du ikke har noen ring, faller du ned på (ett) kne \n>Agnes, som du har lært at du heter, begynner å gråte \n>Hun sier 'Ja'", "forlovet"),
-                ">Det begynner å bli sent, du vet at du må komme deg videre \n>Motvillig, sier dere hade \n>Du vet at du alltid kommer til å tenkte på hva som Kunne vært \n>Du innser at Richard Siken hadde rett \n>Noen må dra først. Dette er en veldig gammel historie. Det finnes ingen annen versjon av denne historien"
+                ">Det begynner å bli sent, du vet at du må komme deg videre \n>Motvillig, sier dere hade \n>Du vet at du alltid kommer til å tenkte på hva som Kunne vært \n>Du innser at Richard Siken hadde rett \n>'Someone has to leave first. This is a very old story. There's no other version of this story'"
             ],
             [
-                "Hallo",
-                "Hallo"
+                (">Du er imponert av sarkasmen og kunnskapen hennes. \n>Du faller ned på kne \n>Agnes er ikke imponert, og slår til deg, hardt \n>Du mister 10HP", -10),
+                ">Du innser at har bedre ting bruke tiden din på, og fortsetter nedover stien \n>Du slettet nettopp Twitter fordi du var lei av å argumentere med 14-åringer med minecraft-youtubere som profilbilde, så hvorfor skal du fortsette denne samtalen?",
+                (">Du slår til Angnes, hun slår tilbake \n>Dere har en slåsskamp midt på stien. \n>Agnes er sterkere enn hun ser ut \n>Hun vinner, og river av et av ørene dine. \n>Du mister 14HP", -14)
             ],
             [
-                "",
+                ">Du begynner å grave et hull med hendene dine. \n>Jorden samler seg under fingerneglene dine \n>Det gjør vondt, men du fortsetter å grave. \n>Så snart hullet er dypt nok, dytter du kvinnen inn i hullet. \n>Du tetter hullet med jorden, og legger mose på toppen slik at ingen skal se Hva Som Er Der. \n>Du håper at ingen begynner å lete her \n>Du fortsetter nedover stien",
                 (">", "kvalm"),
-                (f">Du forlater åstedet, alltid gjemsøkt av hva du har gjort. \n>Hvorfor gjorde du dette? \n>Hvorfor gjorde du dette?\n>Hvorfor gjorde du dette?\n>Hvorfor gjorde du dette?\n>Hvorfor gjorde du dette? \n\n>...\n>Du fortsetter nedover stien","morder")
+                (">Du forlater åstedet, alltid gjemsøkt av hva du har gjort. \n>Hvorfor gjorde du dette? \n>Hvorfor gjorde du dette?\n>Hvorfor gjorde du dette?\n>Hvorfor gjorde du dette?\n>Hvorfor gjorde du dette? \n\n>...\n>Du fortsetter nedover stien","morder")
             ]
         ]
     )
@@ -302,7 +302,7 @@ def velgerEvent(liste:list): #en felles funksjon for å velge inn ulike events
     liste[valg].spillEvent()
     liste.pop(valg)
 
-def spillOver():
+def spillIkkeOver():
     if len(hoyreEvents)!=0 and len(venstreEvents)!=0 and spiller["HP"]>0 and tilstander["snudd"] != True and tilstander["rickern"]== False: #skjekker om de ulike kriteriene for at spillet skal fortsette er oppfylt
         return True #hvis kriteriene er oppfylt, returnerer funksjonen "True" og spillet kommer til å fortsette
     else:
@@ -354,7 +354,7 @@ print("""
 """)
 time.sleep(7)
 
-while spillOver():
+while spillIkkeOver():
     #sjekker hvilken retning spilleren går i og gir et event fra den tilhørende listen
     if tilstander["høyre"] == True:
         velgerEvent(hoyreEvents)
