@@ -38,8 +38,6 @@ def endreTilstand(type:str): #en funksjon som tar inn en type tilstand som skal 
     tilstander[type] = True
 
 
-spiller["Navn"] = input("Hva heter du?: ") #lar spilleren velge sitt eget navn, som kommer til å ha en effekt på introen ol.
-
 
 class singleEvents:
 
@@ -64,13 +62,13 @@ class singleEvents:
         En funksjon som iverksetter eventet som skal kjøres
         Tar automatisk inn variabelen "self", ettersom funksjonen er spesifikk for en klasse
         """
-        print(self.beskrivelse) #printer først ut beskrivelsen for å sette ~stemmningen~
+        print(self.beskrivelse) #printer først ut beskrivelsen for å forklare hva som skjer
         fortsett = True
         while fortsett:#bruker en while-løkke som slutter når spilleren skrier inn et gyldig input
             try: #bruker try- og except-blokker for å være sikker på at det ikke oppstår en error hvis spilleren ikke skriver inn et gyldig input
                 print(self.hvaSkjer) #printer ut hva som skjer og hva spilleren har muligheten til å gjøre
                 resultat = input("    >") #henter inn hvilken index resultatet skal komme fra og trekker fra 1 pga måten python bruker indekser på
-                if resultat == "Rick Astley": #lite Easter Egg for alle singleEvents ;)
+                if resultat == "Rick Astley": #lite Easter Egg for alle events ;)
                     print("Rick Astley hører ditt skrik om hjelp, og kommer for å redde deg")
                     endreTilstand("rickern")
                 else:
@@ -122,19 +120,27 @@ class multiEvents(singleEvents):
             try:  
                 print(self.hvaSkjer)  
                 forsteResultat = int(input("    >"))-1
-                print(self.hvaSkjerTo[forsteResultat]) #siden vi ikke skal gi et resultat enda, printer vi nå ut hva som skjer basert på den forrige handlingen og gir spilleren nye valgmuligheter
-                andreResultat = int(input("    >"))-1
-                if type(self.resultat[forsteResultat][andreResultat]) == tuple: 
-            #tar samme skjekken for verdier som skal endres på samme måte som i super-klassen, men nå skjekker vi listen som ligger inni listen
-                    if type(self.resultat[forsteResultat][andreResultat][1]) == int:
-                        endreHP(self.resultat[forsteResultat][andreResultat][1])
-                    elif type(self.resultat[forsteResultat][andreResultat][1]) == str:
-                        endreTilstand(self.resultat[forsteResultat][andreResultat][1])
-                    print(self.resultat[forsteResultat][andreResultat][0])
+                if forsteResultat == "Rick Astley": #lite Easter Egg for alle events ;)
+                    print("Rick Astley hører ditt skrik om hjelp, og kommer for å redde deg")
+                    endreTilstand("rickern")
                 else:
-                    print(self.resultat[forsteResultat][andreResultat])
-                print()
-                fortsett = False
+                    print(self.hvaSkjerTo[forsteResultat]) #siden vi ikke skal gi et resultat enda, printer vi nå ut hva som skjer basert på den forrige handlingen og gir spilleren nye valgmuligheter
+                    andreResultat = int(input("    >"))-1
+                    if andreResultat == "Rick Astley": #lite Easter Egg for alle events ;)
+                        print("Rick Astley hører ditt skrik om hjelp, og kommer for å redde deg")
+                        endreTilstand("rickern")
+                    else:
+                        if type(self.resultat[forsteResultat][andreResultat]) == tuple: 
+                #tar samme skjekken for verdier som skal endres på samme måte som i super-klassen, men nå skjekker vi listen som ligger inni listen
+                            if type(self.resultat[forsteResultat][andreResultat][1]) == int:
+                                endreHP(self.resultat[forsteResultat][andreResultat][1])
+                            elif type(self.resultat[forsteResultat][andreResultat][1]) == str:
+                                endreTilstand(self.resultat[forsteResultat][andreResultat][1])
+                            print(self.resultat[forsteResultat][andreResultat][0])
+                        else:
+                            print(self.resultat[forsteResultat][andreResultat])
+                        print()
+                        fortsett = False
             except:
                 print(">Du kan kun skrive inn et gyldig tall... \n>La oss ta det fra toppen igjen...")
  
@@ -253,7 +259,6 @@ hoyreEvents = [
         ]
     ),
 ]
-hvaHarSkjeddEvents = []
 
 def velgerEvent(liste:list): #en felles funksjon for å velge inn ulike events
     """
@@ -264,8 +269,15 @@ def velgerEvent(liste:list): #en felles funksjon for å velge inn ulike events
     """
     valg = rd.randint(0, len(liste))-1 #velger eventet tilfeldig fordi det ville vært kjedelig hvis det alltid hadde kommet i en bestemt rekkefølge
     liste[valg].spillEvent()
-    hvaHarSkjeddEvents.append(liste[valg])
     liste.pop(valg)
+
+def spillOver():
+    if len(hoyreEvents)!=0 and len(venstreEvents)!=0 and spiller["HP"]>0 and tilstander["snudd"] != True and tilstander["rickern"] != True: #skjekker om de ulike kriteriene for at spillet skal fortsette er oppfylt
+        return True #hvis kriteriene er oppfylt, returnerer funksjonen "True" og spillet kommer til å fortsette
+    else:
+        return False #hvis alle kriteriene ikke er oppfylt, returnerer funksjonen "False", og spillet avsluttes, og man for den passende endingen
+
+spiller["Navn"] = input("Hva heter du?: ") #lar spilleren velge sitt eget navn, som kommer til å ha en effekt på introen ol.
 
 #printer ut introduksjonen til spilleren
 print(f""">Hei, {spiller['Navn']}!
@@ -311,7 +323,7 @@ print("""
 """)
 time.sleep(10)
 
-while (len(hoyreEvents)!= 0 and len(venstreEvents) !=0 and spiller["HP"] > 0 and tilstander["snudd"] == False and tilstander["rickern"] == False):
+while spillOver():
     #sjekker hvilken retning spilleren går i og gir et event fra den tilhørende listen
     if tilstander["høyre"] == True:
         velgerEvent(hoyreEvents)
@@ -354,7 +366,7 @@ elif tilstander["ekkorn"]==True:
         >er ekornet som står på den blodige strikket-genseren til din avdøde bestemor...\n
         >GAME OVER
         >TRY AGAIN?"
-        """)    
+        """)
 elif tilstander["høy"]==True:
     print("Kjør rehab ending")
 elif tilstander["snudd"] == True:
