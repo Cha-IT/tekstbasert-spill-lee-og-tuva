@@ -417,25 +417,48 @@ if spiller["HP"]<=0:
     print(">GAME OVER \n>TRY AGAIN?")
 elif tilstander["morder"] == True:
     print(f"""
-        >Du kommer deg ut av skogen, men til hvilken pris?
-        >Du har blod på hendene, på klærne dine. Du lukter helt forferdelig
-        >Du hører sirener i bakgrunnen
-        >Du møter blikket til bestemoren din
-        >Hun vet
-        >Hun vet hva du har gjort
-        >Hun klarer ikke møte blikket ditt
-        >Du faller ned på knærne dine og bare detter sammen
-        >Hva har du gjort?
-        >Politiet kommer og setter deg i håndjern
-        >Du setter deg i bilden og ser ut vinduet
-        >Bestemoren møter blikket ditt med tårer i fjeset
-        >Du vil aldri kunne dra på en harrytur igjen...
+    >Du kommer deg ut av skogen, men til hvilken pris?
+    >Du har blod på hendene, på klærne dine. Du lukter helt forferdelig
+    >Du hører sirener i bakgrunnen
+    >Du møter blikket til bestemoren din
+    >Hun vet
+    >Hun vet hva du har gjort
+    >Hun klarer ikke møte blikket ditt
+    >Du faller ned på knærne dine og bare detter sammen
+    >Hva har du gjort?
+    >Politiet kommer og setter deg i håndjern
+    >Du setter deg i bilden og ser ut vinduet
+    >Bestemoren møter blikket ditt med tårer i fjeset
+    >Du vil aldri kunne dra på en harrytur igjen...
 
-        >GAME OVER
-        >TRY AGAIN?
+    >GAME OVER
     """)
 elif tilstander["forlovet"] == True and tilstander["høy"] == True:
-    print("crack cocaine frolovet ending")
+    print(f"""
+    >Du og din kjære Agnes kommer dere endelig gjennom skogen!
+    >Du går med litt ustødige skritt, kanskje den soppen ble for mye, men uansett!
+    >Dere går nedover mot bestemoren din
+    >Hun ser litt rart på Agnes, men dere tenker ikke noe over det...
+    >Du er så lykkelig, men vet ikke om det er fleinen sin feil eller fordi du nettop er blitt forlovet?
+    >Det har kanskje ikke noe å si
+    >Agnes, du og bestemoren din setter dere i bilen og gjør dere klar for å kjøre
+    >Du sitter selvfølgelig IKKE bak rattet
+    >Det går noen timer
+    >Og noen fler
+    >Enda fler?
+    >Bestemoren din er så fokusert på strikkingen hennes,
+    >men du har lagt merke til at dette IKKE er veien til Storlien!
+    >Du ser til Agnes
+    >Hva?
+    >Er det den samme personen?
+    >Har jeg blitt lurt?
+    >Du hadde kanskje glemt av din nåværende påvirkning...
+    >Det er sikkert ikke noe farlig uansett
+    >Du sovner
+        ,men våkner aldri opp igjen...
+
+    >GAME OVER
+    """)
 
 elif tilstander["ekkorn"]==True and tilstander["kvalm"]==True:
     print(f"""
@@ -448,9 +471,48 @@ elif tilstander["ekkorn"]==True and tilstander["kvalm"]==True:
     >Du spyr en stråle mot bakken
     >Så ute av ingenting hopper ekorn kameraten din av skulderen å begynner å spise oppkastetditt?
     >Du og bestemor synes dette er veldig ekkelt. Dere prøver å skynde dere inn i bilen
-    \n
+    
     >GAME OVER
-    >TRY AGAIN? 
+    """)
+elif tilstander['forlovet'] == True:
+    print(f"""
+    >Du, og Agnes, kommer dere nedelig ut av skogen!
+    >"Ka om vi bare gifte oss no?"
+    >Agnes ser dypt inne i øynene dine
+    >Du driter litt i bestemor nå!
+    >Dere springer ned til bilen hennes og kjører av sted
+    >Du vet om en liten kirke som kan vie dere IDAG
+    >På veien dit tenker du litt på bestemoren din, hun sitter alene
+    >Dere skulle jo egentlig til Storlien sammen?
+    >Du velger å ikke tenke noe mer på det
+    >Agnes går først ut av bilen, hun børster litt på håret
+    >og rister av litt jord og møkk fra turen
+    >Dette er drømmedama, tenker du
+    >Dere er nå gift!
+    >Du har en kone!
+    >Dette hadde du ikke forventet
+    >På veien hjem er hodet ditt helt tomt for tanker
+    >Noen blikk sendes frem og tilbake mellom dere
+    >Du kjører bilen inn til bestemoren din igjen
+    >Det kommer en litt ekkel følelse i magen
+    >Skyldfølelse?
+    >Du er egentlig mer spent på å fortelle bestemoren din om alt som har hent,
+        men
+    >Dere ringer på, ikke noe svar
+    >Agnes går rundt for å sjekke i hagen på andre siden
+    >Du går inn
+    >Plutselig!
+    >Du hører et skrik fra Agnes og springer for å se hva som skjer
+    >Der ligger bestemoren din død
+    >Død på bakken
+    >Senere blir det fastslått av legen at hun døde av abstinenser og hjertesorg
+    >Hun hadde gledet seg så mye til å dra med barnebarnet hennes på tur
+    >Bestemoren din har vært enke i mange år
+    >Hun er mye alene, og hennes egne barn snakker nesten ikke med henne
+    >Du er knust, Agnes prøver å trøste deg i flere uker, men det hjelper ikke mye
+    >Din bestemor er nå dø.
+
+    >GAME OVER
     """)
 elif tilstander["ekkorn"]==True:
     print(f"""
@@ -465,9 +527,9 @@ elif tilstander["ekkorn"]==True:
     >Du klarer ikke se på. Du snur deg. 
     >Det blir stille igjen... 
     >Du snur deg tilbake, men du ser ikke bestemoren din lengre? Det er blod overalt og alt duser....
-    >er ekornet som står på den blodige strikket-genseren til din avdøde bestemor...\n
+    >er ekornet som står på den blodige strikket-genseren til din avdøde bestemor...
+
     >GAME OVER
-    >TRY AGAIN?
     """)    
 elif tilstander["høy"]==True:
     print(f"""
@@ -485,9 +547,8 @@ elif tilstander["høy"]==True:
     >"D e for ditt eget bøeste..."
     >En tåre rinner ned det kalde kinnet til bestemoren din mens du blir trillet inn til
     >Rehab for rusmisbruk...
-    \n
+    
     >GAME OVER
-    >TRY AGAIN?
     """)
 elif tilstander["snudd"] == True:
     print(f"""
@@ -498,12 +559,11 @@ elif tilstander["snudd"] == True:
     >Neste dag våkner du til en telefon som ringer
     >Det er moren din, hun er på gråten?
     >Det viser seg at bestemoren din døde denne natten av tobakk abstinenser!
-    \n
+    
     >Om du bare hadde ORKET å dra rundt den kampesteinen og det treet
     >Da hadde hun kanskje overlevd...
-    \n
+    
     >GAME OVER 
-    >TRY AGAIN?
     """)
 elif tilstander["kvalm"]==True:
     print(f"""
@@ -524,9 +584,8 @@ elif tilstander["kvalm"]==True:
     >På deg, på bestemoren din og på vinduet
     >Du klarer ikke se veien lengre og i en pannikk tilstand snurr du bare på rattet
     >Dere krasjer i en fjellvegg langs veien og det var det siste dere gjorde...
-    \n
+    
     >GAME OVER
-    >TRY AGAIN?
     """)
 elif tilstander["rickern"] == True:
     print(f"""
@@ -542,7 +601,7 @@ elif tilstander["rickern"] == True:
     >Du kan nesten se hjertene i øynene deres...
     >Noen uker senere
     >Du er invitert til din bestemor og Rick Astleys bryllup
-    >Du er blomsterpike og ser familie og venner med tårer i øynene
+    >Du sitter på første rad, du ser venner og familie med tårer i øynene
     >"Do you , Rick Astley god amongst men, take Brunhilde as your lawfully wedded wife?"
     >"I do"
     >"And do you, Brunhilde Eriksen, take Rick Astley as your lawfully wedded husband?"
@@ -554,7 +613,6 @@ elif tilstander["rickern"] == True:
     >Dere levde lykkelig resten av deres dager
         
     >GAME OVER
-    >TRY AGAIN?
     """)
 else:
     print(f"""
@@ -571,5 +629,4 @@ else:
     >Du og bestemoren din sovner på soffaen mens Jon Almaas "praktisk info" går i bakgrunnen
 
     >GAME OVER
-    >TRY AGAIN?
     """)
