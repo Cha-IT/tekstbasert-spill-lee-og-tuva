@@ -1,6 +1,9 @@
 import random as rd
 import time
 
+for i in range(100): #skriver ut 100 tomme linjer for å "rengjøre" terminalen før spilleren enten spiller for første gang eller spiller på nytt
+    print()
+
 tilstander = { #en ordbok med tilstander som kan endres til "True" basert på hva spilleren gjør
 #bruker en ordbok for disse tilstandene fordi det gjør det lettere å endre de nødvendige variablene på en generell måte i med klassene
     "rickern": False,
@@ -77,8 +80,8 @@ def trengerHjelp():
                     brukertilstander.append(i) #legger til alle tilstandene til brukeren i listen
             if len(brukertilstander)==0: #sjekker om listen er tom, og sier ifra til brukeren hvis hen ikke har noen tilstander
                 print("    >Du har ingen tilstander")
-        else:
-            print("Husk å skrive 'cont' for å forsette spillet!")
+        else: #hvis brukeren ikke skriver inn et godkjent svar, skrives dette ut
+            print("    >Husk å skrive 'cont' for å fortsette")
         brukerSvar = input("    >") #gir så brukeren muligheten til å sjekke et annen verdi eller avslutte hjelpemenyen og avslutte spillet
         
 
@@ -300,7 +303,7 @@ hoyreEvents = [
         ">Men hva er dette?\n>Litt borte fra stien ser du litt sopp. \n>Du mener å huske at du har sett noe lignende i en bok bestemoren din har om spiselig sopp. \n>Hva gjør du? \n>1: Går bort og spiser soppen \n>2: Fortsetter videre på stien", 
         [
             ">Etter du har spist soppen, innser du at synet ditt begynner å gå litt bananas. \n>Du har nettopp spist fleinsopp! Hva skal du gjøre? \n>1: Svelge soppen og bare la alt dette skje \n>2: Få deg selv til å kaste opp soppen", 
-            ">Du fortsetter videre på stien... \n>Plutselig, ser du en stor, brun bjørn på stien deg! Hva skal du gjøre nå? \n>1:Klatre opp i det nærmeste treet og håpe at bjørnen ikke klatrer etter deg. \n>2: LØP! \n>3: Vel, du har alltid hatt lyst til å ha en slåsskamp med en bjørn..."
+            ">Du fortsetter videre på stien... \n>Plutselig, ser du en stor, brun bjørn på stien foran deg! Hva skal du gjøre nå? \n>1:Klatre opp i det nærmeste treet og håpe at bjørnen ikke klatrer etter deg. \n>2: LØP! \n>3: Vel, du har alltid hatt lyst til å ha en slåsskamp med en bjørn..."
         ],
         [
             [
