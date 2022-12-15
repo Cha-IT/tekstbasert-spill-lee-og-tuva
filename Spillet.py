@@ -65,14 +65,18 @@ def trengerHjelp():
         if brukerSvar.lower() == "hp": #printer ut spillers HP hvis input=hp
             print(f"    >Du har {spiller['HP']}HP!")
         elif brukerSvar.lower() == "tilstander":
-            for i in tilstander.keys(): #går gjennom 
+            brukertilstander = [] #lager en liste som skal ha alle tilstandene til brukeren og kan da brukes til å sjekke om spilleren ikke har noen tilstander
+            for i in tilstander.keys(): #går gjennom alle mulige tilstander brukeren kan ha
                 if tilstander[i]== True: #må først sjekke om brukeren faktisk har tilstanden
                     if  i=="høyre" or i=="venstre": #sjekker så om tilstanden er et retning, ettersom man ikke bare kan si "du er høyre/venstre"
                         print(f"    >Du gikk til {i}")
-                    if i == "ekkorn": #siden tilstanden "ekkorn" er den eneste tilstanden man bare ikke kan si "du er [tilstand]" når man har et ekorn, lager vi et spesialunntak for denne. "Du er ekkorn" er ikke ordentlig norsk, lizzom .
+                    elif i == "ekkorn": #siden tilstanden "ekkorn" er den eneste tilstanden man bare ikke kan si "du er [tilstand]" når man har et ekorn, lager vi et spesialunntak for denne. "Du er ekkorn" er ikke ordentlig norsk, lizzom .
                         print("    >Du har et ekorn på skulderen!")
                     else: #hvis det er alle andre tilstanden enn ekorn-tilstanden, skriver vi ut et generelt output
                         print(f"    >Du er {i}")
+                    brukertilstander.append(i) #legger til alle tilstandene til brukeren i listen
+            if len(brukertilstander)==0: #sjekker om listen er tom, og sier ifra til brukeren hvis hen ikke har noen tilstander
+                print("    >Du har ingen tilstander")
         brukerSvar = input("    >") #gir så brukeren muligheten til å sjekke et annen verdi eller avslutte hjelpemenyen og avslutte spillet
 
 
