@@ -77,6 +77,8 @@ def trengerHjelp():
                     brukertilstander.append(i) #legger til alle tilstandene til brukeren i listen
             if len(brukertilstander)==0: #sjekker om listen er tom, og sier ifra til brukeren hvis hen ikke har noen tilstander
                 print("    >Du har ingen tilstander")
+        else: #hvis brukeren ikke skriver inn et godkjent svar, skrives dette ut
+            print("    >Husk å skrive 'cont' for å fortsette")
         brukerSvar = input("    >") #gir så brukeren muligheten til å sjekke et annen verdi eller avslutte hjelpemenyen og avslutte spillet
 
 
