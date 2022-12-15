@@ -53,10 +53,21 @@ def trengerHjelp():
             HP
         Du kan også sjekke om du har noen andre tilstander/virkninger på deg ved å skrive:
             Tilstander
+        Du kan fortsette spillet ved å skrive inn:
+            Cont
         
         Håper du fikk nytte av dette! :)
                 
     """)
+    brukerSvar = input("    >")
+    while brukerSvar.lower()!="cont":
+        if brukerSvar.lower() == "hp":
+            print(f"Du har {spiller['HP']}HP!")
+        elif brukerSvar.lower() == "tilstander":
+            for i in tilstander.keys():
+                if tilstander[i]== True:
+                    print(f"Du er {i}")
+        brukerSvar = input("    >")
 
 
 
@@ -94,10 +105,6 @@ class singleEvents:
                 else:
                     if resultat.lower() == "hjelp":
                         trengerHjelp()
-                        print(self.hvaSkjer)
-                        resultat = input("    >")
-                    elif resultat.lower() == "hp":
-                        print(f"Du har {spiller['HP']}")
                         print(self.hvaSkjer)
                         resultat = input("    >")
                     resultat = int(resultat)-1
@@ -294,10 +301,10 @@ hoyreEvents = [
 
     multiEvents(
         ">Fuglene kvitrer rundt deg, og solen skinner varmt på ditt kinn",
-        ">Plutselig ser du en vakker dame gå på stien foran deg. \n>Hun snur seg og ser deg \n>Hun sakker ned, som om hun venter på deg. \n>Hva vil du gjøre? \n>1: Introduser deg selv (høfflig), \n>2: Introduser deg selv (uhøfflig) \n>3: Løfte en nærtliggende stein og kaste den på henne",
+        ">Plutselig ser du en vakker dame gå på stien foran deg. \n>Hun snur seg og ser deg \n>Hun sakker ned, som om hun venter på deg. \n>Hva vil du gjøre? \n>1: Introduser deg selv (hølig), \n>2: Introduser deg selv (uhøflig) \n>3: Løfte en nærtliggende stein og kaste den på henne",
         [
             ">Hun hilser tilbake \n>Dere har en hyggelig samtale, og du føler virkelig at dere har en connection. \n>Du har aldri ledd like mye som du har med henne \n>Du har aldri følt deg like fortsått, like sett som du har med henne \n>Du vet at hvis du ikke sier noe, kommer du alltid til å tenke på hva du kunne gjort anderledes hvis du bare hadde sagt noe \n>Du har ikke lyst til å miste henne når stiene dere er på (i livet) deler seg \n>Hva vil du gjøre?\n>1: Kysse henne \n>2: Fri til henne \n>3: Ingenting.",
-            ">Du går bort til henne og drar frem alle banneordene bestemora di noen gang har lært deg \n>Agnes, som du lærer at hun heter, finner sine ord og skjeller deg ut \n>Du har aldri møtt noen som henne \n>Hva vil du gjøre? \n>1: Fri \n>2: Gå videre, \n>3:Equal rights, equal fights",
+            ">Du går bort til henne og drar frem alle banneordene bestemora di noen gang har lært deg \n>Agnes, som du lærer at hun heter, finner sine ord og skjeller deg ut \n>Du har aldri møtt noen som henne \n>Hva vil du gjøre? \n>1: Fri til henne \n>2: Gå videre, \n>3:Equal rights, equal fights",
             ">Du holder øyekontakt imens du plukker opp steinen \n>Hun ser forvirret på deg imens du sikter \n>Du kaster den. \n>Hun faller ned på bakken \n>Hjernen tyter ut av en diger sprekk \n>Begge øya spretter ut \n>'Å nei' tenker Agnes \n>'Jeg ser ikke ut!' \n\n>Hva gjør du nå? \n>1: Begrav kroppen \n>2: Spis henne \n>3: Forlat åstedet"
         ],
         [
@@ -422,55 +429,55 @@ elif tilstander["forlovet"] == True and tilstander["høy"] == True:
 
 elif tilstander["ekkorn"]==True and tilstander["kvalm"]==True:
     print(f"""
-        >Etter en lang, og slitsom, tur er du endelig kommet gjennom skogen!
-        >Du ser at rett ned stien sitter bestemoren din i hagen sin i en god gammal gyngestol
-        >"Du e så treig {spiller['Navn']}"
-        >Plutselig kjenner du at det surrer i magen
-        >Det er den rare ekle soppen du spiste!
-        >Du kjenner at det kommer opp å whooooosshshhssh
-        >Du spyr en stråle mot bakken
-        >Så ute av ingenting hopper ekorn kameraten din av skulderen å begynner å spise oppkastet ditt?
-        >Du og bestemor synes dette er veldig ekkelt. Dere prøver å skynde dere inn i bilen
-        \n
-        >GAME OVER
-        >TRY AGAIN? 
-        """)
+    >Etter en lang, og slitsom, tur er du endelig kommet gjennom skogen!
+    >Du ser at rett ned stien sitter bestemoren din i hagen sin i en god gammal gyngestol
+    >"Du e så treig {spiller['Navn']}"
+    >Plutselig kjenner du at det surrer i magen
+    >Det er den rare ekle soppen du spiste!
+    >Du kjenner at det kommer opp å whooooosshshhssh
+    >Du spyr en stråle mot bakken
+    >Så ute av ingenting hopper ekorn kameraten din av skulderen å begynner å spise oppkastetditt?
+    >Du og bestemor synes dette er veldig ekkelt. Dere prøver å skynde dere inn i bilen
+    \n
+    >GAME OVER
+    >TRY AGAIN? 
+    """)
 elif tilstander["ekkorn"]==True:
     print(f"""
-        >Etter en lang lang tur gjennom den skumle skogen, har du endelig kommet gjennom!
-        >Du ser at lengre ned stien ut av skogen, sitter bestemoren din i en gammel gyngestol i hagen hennes.
-        >"Du brukt jævli lang tid {spiller['Navn']}..."
-        >Bestemoren din ser på skulderen din.
-        >"E d ei rotte? Ta åsså sætt fra dæ den så fær vi"
-        >Du merker at ditt ekorn-venn ikke var veldig glad i den kommentaren...
-        >Plutselig! 
-        >Ekornet angriper bestemoren din! Det er så blodig! 
-        >Du klarer ikke se på. Du snur deg. 
-        >Det blir stille igjen... 
-        >Du snur deg tilbake, men du ser ikke bestemoren din lengre? Det er blod overalt og alt du ser....
-        >er ekornet som står på den blodige strikket-genseren til din avdøde bestemor...\n
-        >GAME OVER
-        >TRY AGAIN?
-        """)    
+    >Etter en lang lang tur gjennom den skumle skogen, har du endelig kommet gjennom!
+    >Du ser at lengre ned stien ut av skogen, sitter bestemoren din i en gammel gyngestol ihagen hennes.
+    >"Du brukt jævli lang tid {spiller['Navn']}..."
+    >Bestemoren din ser på skulderen din.
+    >"E d ei rotte? Ta åsså sætt fra dæ den så fær vi"
+    >Du merker at ditt ekorn-venn ikke var veldig glad i den kommentaren...
+    >Plutselig! 
+    >Ekornet angriper bestemoren din! Det er så blodig! 
+    >Du klarer ikke se på. Du snur deg. 
+    >Det blir stille igjen... 
+    >Du snur deg tilbake, men du ser ikke bestemoren din lengre? Det er blod overalt og alt duser....
+    >er ekornet som står på den blodige strikket-genseren til din avdøde bestemor...\n
+    >GAME OVER
+    >TRY AGAIN?
+    """)    
 elif tilstander["høy"]==True:
     print(f"""
-        >Etter en lang, og veldig merkelig tur...., kommer du endelig deg gjennom skogen!
-        >Du ser deg rundt og finner bestemoren din
-        >Hun sitter i en gammel gyngestol og holder på å sovne...
-        >"Du brukt no ganske lang tid no da {spiller['Navn']}!"
-        >Bestemoren stirrer deg opp og ned, hun merker det er noe rart ved deg?
-        >"Kom no så går vi te bila"
-        >Du er klar for å kjøre, noe som du virkelig ikke burde gjøre i din påvirkede tilstand, men
-        >plutselig setter bestemoren din seg bak rattet?
-        >Du setter deg i passasjer-setet og dovner litt bort..
-        >Når du våkner sitter du fast?
-        >Du ser deg rundt og kjenner igjen at du har havnet på st. olavs?
-        >"D e for ditt eget bøeste..."
-        >En tåre rinner ned det kalde kinnet til bestemoren din mens du blir trillet inn til
-        >Rehab for rusmisbruk...
-        \n
-        >GAME OVER
-        >TRY AGAIN?
+    >Etter en lang, og veldig merkelig tur...., kommer du endelig deg gjennom skogen!
+    >Du ser deg rundt og finner bestemoren din
+    >Hun sitter i en gammel gyngestol og holder på å sovne...
+    >"Du brukt no ganske lang tid no da {spiller['Navn']}!"
+    >Bestemoren stirrer deg opp og ned, hun merker det er noe rart ved deg?
+    >"Kom no så går vi te bila"
+    >Du er klar for å kjøre, noe som du virkelig ikke burde gjøre i din påvirkede tilstand, men
+    >plutselig setter bestemoren din seg bak rattet?
+    >Du setter deg i passasjer-setet og dovner litt bort..
+    >Når du våkner sitter du fast?
+    >Du ser deg rundt og kjenner igjen at du har havnet på st. olavs?
+    >"D e for ditt eget bøeste..."
+    >En tåre rinner ned det kalde kinnet til bestemoren din mens du blir trillet inn til
+    >Rehab for rusmisbruk...
+    \n
+    >GAME OVER
+    >TRY AGAIN?
     """)
 elif tilstander["snudd"] == True:
     print(f"""
@@ -513,31 +520,31 @@ elif tilstander["kvalm"]==True:
     """)
 elif tilstander["rickern"] == True:
     print(f"""
-        >Du roper ut etter Rick Astley
-        >DU FÅR SVAR?
-        >Du hører en fjern melodi som kommer nærmere og nærmere...
-        >Rick flyr over deg!
-        >Han svever ned og plukker deg opp
-        >Han flyr deg over skogen og du ser alt det fæle som kunne ha skjedd
-        >Etter bare noen minutter er du kommet over hele skogen
-        >Rick setter deg forsiktig ned på bakken
-        >I det dere lander får han og bestemoren din øyekontakt med en gang
-        >Du kan nesten se hjertene i øynene deres...
-        >Noen uker senere
-        >Du er invitert til din bestemor og Rick Astleys bryllup
-        >Du er blomsterpike og ser familie og venner med tårer i øynene
-        >"Do you , Rick Astley god amongst men, take Brunhilde as your lawfully wedded wife?"
-        >"I do"
-        >"And do you, Brunhilde Eriksen, take Rick Astley as your lawfully wedded husband?"
-        >"I do"
-        >"You may kiss the bride!"
-        >Kirken dere er i bryter ut i sang!
-        >For en lykkelig dag <3
-        >Du hører en orgel versjon av "Never gonna' give you up" spiller mens de går ut av kirken
-        >Dere levde lykkelig resten av deres dager
+    >Du roper ut etter Rick Astley
+    >DU FÅR SVAR?
+    >Du hører en fjern melodi som kommer nærmere og nærmere...
+    >Rick flyr over deg!
+    >Han svever ned og plukker deg opp
+    >Han flyr deg over skogen og du ser alt det fæle som kunne ha skjedd
+    >Etter bare noen minutter er du kommet over hele skogen
+    >Rick setter deg forsiktig ned på bakken
+    >I det dere lander får han og bestemoren din øyekontakt med en gang
+    >Du kan nesten se hjertene i øynene deres...
+    >Noen uker senere
+    >Du er invitert til din bestemor og Rick Astleys bryllup
+    >Du er blomsterpike og ser familie og venner med tårer i øynene
+    >"Do you , Rick Astley god amongst men, take Brunhilde as your lawfully wedded wife?"
+    >"I do"
+    >"And do you, Brunhilde Eriksen, take Rick Astley as your lawfully wedded husband?"
+    >"I do"
+    >"You may kiss the bride!"
+    >Kirken dere er i bryter ut i sang!
+    >For en lykkelig dag <3
+    >Du hører en orgel versjon av "Never gonna' give you up" spiller mens de går ut av kirken
+    >Dere levde lykkelig resten av deres dager
         
-        >GAME OVER
-        >TRY AGAIN?
+    >GAME OVER
+    >TRY AGAIN?
     """)
 else:
     print(f"""
