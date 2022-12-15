@@ -77,8 +77,10 @@ def trengerHjelp():
                     brukertilstander.append(i) #legger til alle tilstandene til brukeren i listen
             if len(brukertilstander)==0: #sjekker om listen er tom, og sier ifra til brukeren hvis hen ikke har noen tilstander
                 print("    >Du har ingen tilstander")
+        else:
+            print("Husk å skrive 'cont' for å forsette spillet!")
         brukerSvar = input("    >") #gir så brukeren muligheten til å sjekke et annen verdi eller avslutte hjelpemenyen og avslutte spillet
-
+        
 
 
 class singleEvents:
@@ -319,7 +321,7 @@ hoyreEvents = [
         [
             ">Hun hilser tilbake \n>Dere har en hyggelig samtale, og du føler virkelig at dere har en connection. \n>Du har aldri ledd like mye som du har med henne \n>Du har aldri følt deg like fortsått, like sett som du har med henne \n>Du vet at hvis du ikke sier noe, kommer du alltid til å tenke på hva du kunne gjort anderledes hvis du bare hadde sagt noe \n>Du har ikke lyst til å miste henne når stiene dere er på (i livet) deler seg \n>Hva vil du gjøre?\n>1: Kysse henne \n>2: Fri til henne \n>3: Ingenting.",
             ">Du går bort til henne og drar frem alle banneordene bestemora di noen gang har lært deg \n>Agnes, som du lærer at hun heter, finner sine ord og skjeller deg ut \n>Du har aldri møtt noen som henne \n>Hva vil du gjøre? \n>1: Fri til henne \n>2: Gå videre, \n>3:Equal rights, equal fights",
-            ">Du holder øyekontakt imens du plukker opp steinen \n>Hun ser forvirret på deg imens du sikter \n>Du kaster den. \n>Hun faller ned på bakken \n>Hjernen tyter ut av en diger sprekk \n>Begge øya spretter ut \n>'Å nei' tenker Agnes \n>'Jeg ser ikke ut!' \n\n>Hva gjør du nå? \n>1: Begrav kroppen \n>2: Spis henne \n>3: Forlat åstedet"
+            ">Du holder øyekontakt imens du plukker opp steinen \n>Hun ser forvirret på deg imens du sikter \n>Du kaster den. \n>Hun faller ned på bakken \n>Hjernen tyter ut av en diger sprekk \n>Begge øya spretter ut \n>'Å nei' tenker Agnes \n>'Jeg ser ikke ut!' \n Blodet spruter på deg! \n\n>Hva gjør du nå? \n>1: Begrav kroppen \n>2: Spis henne \n>3: Forlat åstedet"
         ],
         [
             [
@@ -436,6 +438,8 @@ elif tilstander["morder"] == True:
     >Du vil aldri kunne dra på en harrytur igjen...
 
     >GAME OVER
+    >DU FIKK ENDING "MORDER"
+    >10/11
     """)
 elif tilstander["forlovet"] == True and tilstander["høy"] == True:
     print(f"""
@@ -462,6 +466,8 @@ elif tilstander["forlovet"] == True and tilstander["høy"] == True:
         ,men våkner aldri opp igjen...
 
     >GAME OVER
+    >DU FIKK ENDING "HJERTESORG"
+    >8/11
     """)
 
 elif tilstander["ekkorn"]==True and tilstander["kvalm"]==True:
@@ -477,6 +483,8 @@ elif tilstander["ekkorn"]==True and tilstander["kvalm"]==True:
     >Du og bestemor synes dette er veldig ekkelt. Dere prøver å skynde dere inn i bilen
     
     >GAME OVER
+    >DU FIKK ENDING "SKREKK OG GRU"
+    >7/11
     """)
 elif tilstander['forlovet'] == True:
     print(f"""
@@ -517,6 +525,8 @@ elif tilstander['forlovet'] == True:
     >Din bestemor er nå dø.
 
     >GAME OVER
+    >DU FIKK ENDING "FORLOVET"
+    >6/11
     """)
 elif tilstander["ekkorn"]==True:
     print(f"""
@@ -534,6 +544,8 @@ elif tilstander["ekkorn"]==True:
     >er ekornet som står på den blodige strikket-genseren til din avdøde bestemor...
 
     >GAME OVER
+    >DU FIKK ENDING "EKORN"
+    >5/11
     """)    
 elif tilstander["høy"]==True:
     print(f"""
@@ -553,6 +565,8 @@ elif tilstander["høy"]==True:
     >Rehab for rusmisbruk...
     
     >GAME OVER
+    >DU FIKK ENDING "HØY"
+    >4/11
     """)
 elif tilstander["snudd"] == True:
     print(f"""
@@ -568,6 +582,8 @@ elif tilstander["snudd"] == True:
     >Da hadde hun kanskje overlevd...
     
     >GAME OVER 
+    >DU FIKK ENDING "SNUR"
+    >1/11
     """)
 elif tilstander["kvalm"]==True:
     print(f"""
@@ -590,6 +606,8 @@ elif tilstander["kvalm"]==True:
     >Dere krasjer i en fjellvegg langs veien og det var det siste dere gjorde...
     
     >GAME OVER
+    >DU FIKK ENDING "KVALM"
+    >3/11
     """)
 elif tilstander["rickern"] == True:
     print(f"""
@@ -617,6 +635,8 @@ elif tilstander["rickern"] == True:
     >Dere levde lykkelig resten av deres dager
         
     >GAME OVER
+    >DU FIKK ENDING "RICK ASTLEY"
+    >11/11
     """)
 else:
     print(f"""
@@ -633,4 +653,6 @@ else:
     >Du og bestemoren din sovner på soffaen mens Jon Almaas "praktisk info" går i bakgrunnen
 
     >GAME OVER
+    >DU FIKK "VANLIG ENDING" 
+    >2/11
     """)
