@@ -175,6 +175,10 @@ class multiEvents(singleEvents):
                     if andreResultat.lower() == "rick astley": #lite Easter Egg for alle events ;)
                         endreTilstand("rickern")
                     else:
+                        if andreResultat.lower() == "hjelp":
+                            trengerHjelp()
+                            print(self.hvaSkjer)
+                            andreResultat = input("    >")
                         andreResultat = int(andreResultat)-1
                         if type(self.resultat[forsteResultat][andreResultat]) == tuple: 
                 #tar samme skjekken for verdier som skal endres på samme måte som i super-klassen, men nå skjekker vi listen som ligger inni listen
