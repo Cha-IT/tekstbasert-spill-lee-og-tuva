@@ -62,11 +62,11 @@ def trengerHjelp():
     brukerSvar = input("    >")
     while brukerSvar.lower()!="cont":
         if brukerSvar.lower() == "hp":
-            print(f"Du har {spiller['HP']}HP!")
+            print(f"    >Du har {spiller['HP']}HP!")
         elif brukerSvar.lower() == "tilstander":
             for i in tilstander.keys():
-                if tilstander[i]== True:
-                    print(f"Du er {i}")
+                if tilstander[i]== True and i!="høyre" and i!="venstre":
+                    print(f"    >Du er {i}")
         brukerSvar = input("    >")
 
 
