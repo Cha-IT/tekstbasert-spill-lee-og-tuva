@@ -42,8 +42,9 @@ def endreTilstand(type:str): #en funksjon som tar inn en type tilstand som skal 
 def trengerHjelp():
     """
     En funksjon som kan gi spilleren informasjon om deres hp-tistand og deres andre tilstander
+    Denne funksjonen tar ikke inn noen parametere
     """
-    print(f""" 
+    print(""" 
 
         Du spørr om hjelp!
             Om spillet:
@@ -59,15 +60,20 @@ def trengerHjelp():
         Håper du fikk nytte av dette! :)
                 
     """)
-    brukerSvar = input("    >")
-    while brukerSvar.lower()!="cont":
-        if brukerSvar.lower() == "hp":
+    brukerSvar = input("    >")#gir brukeren muligheten til å skrive inn et input som vil la dem enten sjekke tilstander, HP, eller fortsette spillet
+    while brukerSvar.lower()!="cont": #så lenge brukeren sier at hen IKKE vil fortsette spillet, skal hen få muligheten til å fortsette å skrive inn inputs som lar hen sjekke HP/tilstander
+        if brukerSvar.lower() == "hp": #printer ut spillers HP hvis input=hp
             print(f"    >Du har {spiller['HP']}HP!")
         elif brukerSvar.lower() == "tilstander":
-            for i in tilstander.keys():
-                if tilstander[i]== True and i!="høyre" and i!="venstre":
-                    print(f"    >Du er {i}")
-        brukerSvar = input("    >")
+            for i in tilstander.keys(): #går gjennom 
+                if tilstander[i]== True: #må først sjekke om brukeren faktisk har tilstanden
+                    if  i=="høyre" or i=="venstre": #sjekker så om tilstanden er et retning, ettersom man ikke bare kan si "du er høyre/venstre"
+                        print(f"    >Du gikk til {i}")
+                    if i == "ekkorn": #siden tilstanden "ekkorn" er den eneste tilstanden man bare ikke kan si "du er [tilstand]" når man har et ekorn, lager vi et spesialunntak for denne. "Du er ekkorn" er ikke ordentlig norsk, lizzom .
+                        print("    >Du har et ekorn på skulderen!")
+                    else: #hvis det er alle andre tilstanden enn ekorn-tilstanden, skriver vi ut et generelt output
+                        print(f"    >Du er {i}")
+        brukerSvar = input("    >") #gir så brukeren muligheten til å sjekke et annen verdi eller avslutte hjelpemenyen og avslutte spillet
 
 
 
